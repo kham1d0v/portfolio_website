@@ -112,9 +112,15 @@
       padding: 10px 12px;
       border-radius: 999px;
       transition: .18s ease;
+      outline: none;
     }
     .menu a:hover{
       color: var(--text);
+      background: rgba(255,255,255,.06);
+    }
+    .menu a:focus-visible{
+      color: var(--text);
+      box-shadow: 0 0 0 3px rgba(255,255,255,.16);
       background: rgba(255,255,255,.06);
     }
 
@@ -129,8 +135,10 @@
       color: var(--text);
       font-weight:800;
       transition: .18s ease;
+      outline: none;
     }
     .phone-pill:hover{ background: rgba(255,255,255,.10); transform: translateY(-1px); }
+    .phone-pill:focus-visible{ box-shadow: 0 0 0 3px rgba(255,255,255,.16); }
     .phone-pill svg{ opacity:.9; }
 
     /* HERO */
@@ -222,7 +230,7 @@
       letter-spacing: .1px;
     }
 
-    /* BUTTONS (hover + press + ripple) */
+    /* BUTTONS (hover + press + ripple + shimmer) */
     .actions{
       display:flex;
       flex-wrap:wrap;
@@ -246,10 +254,16 @@
       transition: .18s ease;
       user-select:none;
       -webkit-tap-highlight-color: transparent;
-      overflow:hidden;
+      overflow:hidden;   /* SHIMMER + RIPPLE uchun shart */
+      outline: none;
+      isolation: isolate;
     }
     .btn:hover{ background: rgba(255,255,255,.10); transform: translateY(-2px); }
     .btn:active{ transform: translateY(0); }
+    .btn:focus-visible{
+      box-shadow: 0 0 0 3px rgba(255,255,255,.18);
+      background: rgba(255,255,255,.10);
+    }
     .btn.primary{
       background: rgba(255,255,255,.92);
       color:#0b0c0f;
@@ -258,17 +272,63 @@
     .btn.primary:hover{ background: rgba(255,255,255,1); }
     .btn svg{ opacity:.95; }
 
+    /* ===== Professional Hover Shimmer (Variant A) ===== */
+    .btn::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:-120%;
+      width:60%;
+      height:100%;
+      background: linear-gradient(
+        110deg,
+        transparent 0%,
+        rgba(255,255,255,.10) 40%,
+        rgba(255,255,255,.28) 50%,
+        rgba(255,255,255,.10) 60%,
+        transparent 100%
+      );
+      transform: skewX(-18deg);
+      pointer-events:none;
+      z-index:0;
+    }
+    .btn:hover::before{
+      animation: shimmerMove .85s ease-out forwards;
+    }
+    @keyframes shimmerMove{
+      0%{ left:-120%; }
+      100%{ left:130%; }
+    }
+    /* Primary knopkada nur sal yumshoq bo‘lsin */
+    .btn.primary::before{
+      background: linear-gradient(
+        110deg,
+        transparent 0%,
+        rgba(0,0,0,.05) 40%,
+        rgba(0,0,0,.10) 50%,
+        rgba(0,0,0,.05) 60%,
+        transparent 100%
+      );
+    }
+
+    /* RIPPLE (desktopda yaxshi, mobileda yumshoq) */
     .ripple{
       position:absolute;
       border-radius:999px;
       transform: translate(-50%, -50%);
-      background: rgba(255,255,255,.35);
+      background: rgba(255,255,255,.32);
       animation: ripple .55s ease-out;
       pointer-events:none;
+      z-index:1;
     }
     @keyframes ripple{
       from{ width: 0; height: 0; opacity: .55; }
       to{ width: 420px; height: 420px; opacity: 0; }
+    }
+    @media (hover: none){
+      /* telefonda ripple biroz kamroq ko‘rinsin */
+      .ripple{ background: rgba(255,255,255,.22); }
+      .btn:hover{ transform:none; }
     }
 
     /* SECTIONS */
@@ -446,7 +506,8 @@
 
           <p class="desc">
             Farg‘ona viloyati, Rishton tumani. Kiberxavfsizlik yo‘nalishi talabasiman.
-            Boks bilan 6 yil shug‘ullanganman, 2 marta viloyat chempioni
+            Boks bilan 6 yil shug‘ullanganman, 2 marta viloyat chempioni.
+            Minimal, tartibli va ishonchli profil — keraksiz ma’lumotsiz.
           </p>
 
           <div class="tags" aria-label="Teglar">
@@ -456,7 +517,6 @@
           </div>
 
           <div class="actions">
-            <!-- LINKLAR REAL: bosganda ochiladi -->
             <a class="btn primary" href="https://t.me/kham1d0v_712" target="_blank" rel="noreferrer">
               <svg viewBox="0 0 24 24" fill="none">
                 <path d="M21 5.3L3.9 12.1c-1.2.5-1.2 1.2-.2 1.5l4.4 1.4 10.1-6.4c.5-.3.9-.1.5.2l-8.2 7.5-.3 4.3c.4 0 .6-.2.9-.5l2.2-2.2 4.5 3.3c.8.4 1.4.2 1.6-.8l2.8-13c.3-1.2-.5-1.7-1.4-1.3z" stroke="black" stroke-width="1.6" stroke-linejoin="round"/>
@@ -581,7 +641,7 @@
   </footer>
 
   <script>
-    // Ripple + press feedback (hamma .btn uchun)
+    // Ripple (faqat .btn uchun). Link ishlashiga halal bermaydi.
     document.querySelectorAll('.btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const rect = btn.getBoundingClientRect();
