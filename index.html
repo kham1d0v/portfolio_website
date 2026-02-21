@@ -1,297 +1,261 @@
 <!doctype html>
 <html lang="uz">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hamidov Sherzodbek</title>
-  <meta name="description" content="Hamidov Sherzodbek — shaxsiy sahifa: Telegram, Instagram, telefon va qisqa tanishtiruv." />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hamidov Sherzodbek</title>
 
-  <style>
-    :root{
-      --bg:#050607;
-      --text:#f4f6ff;
-      --muted:rgba(244,246,255,.72);
-      --line:rgba(255,255,255,.10);
-      --glass:rgba(255,255,255,.06);
-      --glass2:rgba(255,255,255,.04);
-      --shadow:0 18px 60px rgba(0,0,0,.65);
-      --r:20px;
-      --max:980px;
-    }
+<style>
+:root{
+  --text:#f3f5ff;
+  --muted:rgba(243,245,255,.75);
+  --line:rgba(255,255,255,.12);
+  --glass:rgba(255,255,255,.08);
+  --shadow:0 25px 80px rgba(0,0,0,.8);
+  --radius:22px;
+}
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(900px 520px at 20% -10%, rgba(255,255,255,.08), transparent 60%),
-        radial-gradient(900px 520px at 80% 0%, rgba(255,255,255,.05), transparent 60%),
-        radial-gradient(900px 520px at 50% 110%, rgba(255,255,255,.06), transparent 60%),
-        var(--bg);
-    }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 16px}
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  color:var(--text);
+  background:#000;
+  overflow-x:hidden;
+}
 
-    /* NAV (glass, sticky) */
-    .nav{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(14px);
-      background: rgba(5,6,7,.62);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-in{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:12px; padding:12px 0;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight:800; letter-spacing:.2px; white-space:nowrap;
-    }
-    .dot{
-      width:10px; height:10px; border-radius:999px;
-      background:#fff;
-      box-shadow:0 0 0 6px rgba(255,255,255,.08);
-    }
-    .menu{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
-    .menu a{
-      padding:10px 12px;
-      border-radius:999px;
-      color:var(--muted);
-      font-weight:650;
-      font-size:14px;
-      transition:.2s;
-    }
-    .menu a:hover{background:rgba(255,255,255,.06); color:var(--text)}
-    .phone-pill{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 14px;
-      border:1px solid var(--line);
-      background:var(--glass);
-      border-radius:999px;
-      color:var(--text);
-    }
+/* ===== FULLSCREEN BACKGROUND ===== */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:url("bg.jpg") center / cover no-repeat;
+  transform:scale(1.05);
+}
 
-    /* HERO */
-    .hero{padding:42px 0 18px}
-    .panel{
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, var(--glass), var(--glass2));
-      border-radius: calc(var(--r) + 4px);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-    .panel-in{padding:26px 18px 22px; text-align:center}
+/* DARK + READABILITY OVERLAY */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(0,0,0,.3), rgba(0,0,0,.8)),
+    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.85));
+}
 
-    .avatar{
-      width:138px; height:138px;
-      border-radius:999px;
-      object-fit:cover;
-      border: 2px solid rgba(255,255,255,.85);
-      box-shadow:0 18px 55px rgba(0,0,0,.75);
-      display:block;
-      margin:0 auto 14px;
-      background:rgba(255,255,255,.08);
-    }
+/* ===== NAV ===== */
+.nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  backdrop-filter:blur(18px);
+  background:rgba(0,0,0,.45);
+  border-bottom:1px solid var(--line);
+  z-index:100;
+}
+.nav-in{
+  max-width:1100px;
+  margin:auto;
+  padding:14px 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.brand{
+  font-weight:800;
+  letter-spacing:.3px;
+}
+.menu a{
+  margin-left:16px;
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:600;
+}
+.menu a:hover{color:white}
 
-    .name{
-      margin:0;
-      font-size:42px;
-      letter-spacing:-.8px;
-      line-height:1.08;
-    }
-    @media (max-width:520px){
-      .name{font-size:32px}
-      .avatar{width:120px;height:120px}
-    }
+/* ===== SECTIONS ===== */
+section{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:120px 20px 80px;
+}
 
-    .sub{
-      margin:10px auto 0;
-      max-width:70ch;
-      color:var(--muted);
-      line-height:1.7;
-      font-size:15px;
-    }
+/* ===== GLASS CARD ===== */
+.card{
+  max-width:850px;
+  width:100%;
+  background:var(--glass);
+  border:1px solid var(--line);
+  backdrop-filter:blur(20px);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:40px 30px;
+  text-align:center;
+}
 
-    .chips{
-      margin:14px auto 0;
-      display:flex; gap:8px; flex-wrap:wrap; justify-content:center;
-    }
-    .chip{
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(0,0,0,.20);
-      color:var(--muted);
-      font-weight:650;
-      font-size:13px;
-    }
+/* ===== HERO ===== */
+.avatar{
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid rgba(255,255,255,.9);
+  box-shadow:0 20px 60px rgba(0,0,0,.9);
+  margin-bottom:20px;
+}
 
-    .btns{
-      margin-top:16px;
-      display:flex; gap:10px; flex-wrap:wrap; justify-content:center;
-    }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:12px 16px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.05);
-      font-weight:800;
-      font-size:14px;
-      transition:.2s;
-    }
-    .btn:hover{transform:translateY(-2px); background:rgba(255,255,255,.08)}
-    .btn.primary{
-      background:#fff;
-      color:#050607;
-      border-color:transparent;
-    }
+h1{
+  margin:0;
+  font-size:48px;
+  letter-spacing:-1px;
+}
 
-    /* SECTIONS */
-    section{padding:18px 0}
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:12px;
-      margin-top:12px;
-    }
-    @media (max-width:920px){ .grid{grid-template-columns:1fr} }
+.lead{
+  margin:15px auto 0;
+  max-width:60ch;
+  line-height:1.8;
+  color:var(--muted);
+}
 
-    .card{
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
-      border-radius:var(--r);
-      box-shadow:var(--shadow);
-      padding:16px;
-    }
-    .icon{
-      width:44px;height:44px;border-radius:14px;
-      display:grid;place-items:center;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(0,0,0,.22);
-      margin-bottom:10px;
-      font-size:20px;
-    }
-    .card h3{margin:0 0 6px; font-size:18px; letter-spacing:-.2px}
-    .card p{margin:0; color:var(--muted); line-height:1.7}
+/* ===== BUTTONS ===== */
+.btns{
+  margin-top:25px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
 
-    /* CONTACT BLOCK */
-    .contact{
-      margin-top:10px;
-      text-align:center;
-      padding:20px 0 6px;
-    }
-    .contact h2{
-      margin:0 0 8px;
-      font-size:30px;
-      letter-spacing:-.5px;
-    }
-    .contact p{margin:0 auto; max-width:75ch; color:var(--muted); line-height:1.75}
+.btn{
+  padding:14px 22px;
+  border-radius:16px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.08);
+  font-weight:700;
+  text-decoration:none;
+  color:white;
+  transition:.25s;
+}
+.btn:hover{
+  transform:translateY(-4px);
+  background:white;
+  color:black;
+}
 
-    /* FOOTER */
-    footer{
-      margin-top:26px;
-      border-top:1px solid var(--line);
-      background:rgba(0,0,0,.22);
-      padding:18px 0;
-      text-align:center;
-      color:rgba(244,246,255,.55);
-      font-size:13px;
-    }
-  </style>
+/* ===== ABOUT ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:30px;
+}
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr}
+}
+
+.box{
+  padding:20px;
+  border-radius:var(--radius);
+  background:rgba(255,255,255,.07);
+  border:1px solid var(--line);
+  backdrop-filter:blur(15px);
+}
+
+.box h3{
+  margin:0 0 10px;
+}
+.box p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  text-align:center;
+  padding:30px 10px;
+  color:rgba(255,255,255,.5);
+  font-size:13px;
+}
+</style>
 </head>
 
 <body>
-  <!-- NAV -->
-  <div class="nav">
-    <div class="wrap">
-      <div class="nav-in">
-        <div class="brand"><span class="dot"></span> Sherzod</div>
-        <div class="menu">
-          <a href="#home">Bosh sahifa</a>
-          <a href="#about">Men haqimda</a>
-          <a href="#contact">Bog‘lanish</a>
-          <a class="phone-pill" href="tel:+998502220600">📞 +998 50 222 06 00</a>
-        </div>
+
+<div class="nav">
+  <div class="nav-in">
+    <div class="brand">Sherzod</div>
+    <div class="menu">
+      <a href="#home">Bosh sahifa</a>
+      <a href="#about">Men haqimda</a>
+      <a href="#contact">Bog‘lanish</a>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="card">
+    <img src="profile.jpg" class="avatar" alt="">
+    <h1>Hamidov Sherzodbek</h1>
+    <p class="lead">
+      2-kurs • Kiberxavfsizlik injiniring • Kokand University<br>
+      Farg‘ona viloyati, Rishton tumani.<br>
+      Boks: 6 yil • 2 marta viloyat chempioni.
+    </p>
+
+    <div class="btns">
+      <a class="btn" href="https://t.me/kham1d0v_712" target="_blank">Telegram</a>
+      <a class="btn" href="https://instagram.com/kham1d0v_727" target="_blank">Instagram</a>
+      <a class="btn" href="tel:+998502220600">Telefon</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="card">
+    <h1>Nima taqdim etaman</h1>
+    <div class="grid">
+      <div class="box">
+        <h3>Yo‘nalish</h3>
+        <p>Kiberxavfsizlik asoslari, amaliy mashg‘ulotlar va intizom.</p>
+      </div>
+      <div class="box">
+        <h3>Sport</h3>
+        <p>Boks tajribasi — 6 yil. Kuch, sabr va tartib.</p>
+      </div>
+      <div class="box">
+        <h3>Minimalizm</h3>
+        <p>Keraksiz narsalarsiz, toza va professional ko‘rinish.</p>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- HERO -->
-  <div id="home" class="hero">
-    <div class="wrap">
-      <div class="panel">
-        <div class="panel-in">
-          <!-- RASM NOMI: profile.jpg -->
-          <img class="avatar" src="profile.jpg" alt="Hamidov Sherzodbek">
+<!-- CONTACT -->
+<section id="contact">
+  <div class="card">
+    <h1>Bog‘lanish</h1>
+    <p class="lead">Eng tez aloqa — Telegram.</p>
 
-          <h1 class="name">Hamidov Sherzodbek</h1>
-
-          <p class="sub">
-            2-kurs • Kiberxavfsizlik injiniring • Kokand University<br>
-            Farg‘ona viloyati, Rishton tumani. Boks: 6 yil, 2 marta viloyat chempioni.
-          </p>
-
-          <div class="chips">
-            <span class="chip">Minimal & Dark</span>
-            <span class="chip">Cybersecurity</span>
-            <span class="chip">Boxing discipline</span>
-          </div>
-
-          <div class="btns">
-            <a class="btn primary" href="https://t.me/kham1d0v_712" target="_blank" rel="noreferrer">Telegram →</a>
-            <a class="btn" href="https://instagram.com/kham1d0v_727" target="_blank" rel="noreferrer">Instagram</a>
-            <a class="btn" href="tel:+998502220600">Telefon</a>
-          </div>
-        </div>
-      </div>
+    <div class="btns">
+      <a class="btn" href="https://t.me/kham1d0v_712" target="_blank">Telegram</a>
+      <a class="btn" href="https://instagram.com/kham1d0v_727" target="_blank">Instagram</a>
+      <a class="btn" href="tel:+998502220600">Telefon</a>
     </div>
   </div>
+</section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="wrap">
-      <div class="grid">
-        <div class="card">
-          <div class="icon">👤</div>
-          <h3>Qisqa tanishtiruv</h3>
-          <p>Shaxsiy tanishuv uchun minimal ma’lumot. Keraksiz narsalar yo‘q.</p>
-        </div>
+<footer>
+© 2026 Sherzod • GitHub Pages
+</footer>
 
-        <div class="card">
-          <div class="icon">🛡️</div>
-          <h3>Yo‘nalish</h3>
-          <p>Kiberxavfsizlik injiniring. Hozir fokus: asoslar, odatlar, amaliyot.</p>
-        </div>
-
-        <div class="card">
-          <div class="icon">🥊</div>
-          <h3>Sport</h3>
-          <p>Boks: 6 yil. 2 marta viloyat chempioni. Intizom va natija.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="contact">
-    <div class="wrap">
-      <h2>Bog‘lanish</h2>
-      <p>Eng tez aloqa — Telegram. Instagram ham bor. Telefon ham ishlaydi.</p>
-
-      <div class="btns" style="margin-top:14px">
-        <a class="btn primary" href="https://t.me/kham1d0v_712" target="_blank" rel="noreferrer">Telegram →</a>
-        <a class="btn" href="https://instagram.com/kham1d0v_727" target="_blank" rel="noreferrer">Instagram</a>
-        <a class="btn" href="tel:+998502220600">Telefon</a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    © 2026 Hamidov Sherzodbek • GitHub Pages
-  </footer>
 </body>
 </html>
