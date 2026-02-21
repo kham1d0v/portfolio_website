@@ -1,104 +1,530 @@
 <!doctype html>
 <html lang="uz">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Hamidov Sherzodbek</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hamidov Sherzodbek</title>
+  <meta name="description" content="Hamidov Sherzodbek — shaxsiy sahifa: linklar va qisqa ma’lumot." />
 
-<style>
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:#000;
-  color:#fff;
-  text-align:center;
-}
+  <style>
+    :root{
+      --bg:#0a0a0a;
+      --panel:#0f0f10;
+      --card:#0f1115;
+      --line: rgba(255,255,255,.08);
+      --text:#f3f5ff;
+      --muted: rgba(243,245,255,.68);
+      --muted2: rgba(243,245,255,.50);
+      --accent:#ffffff;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 18px;
+      --max: 1120px;
+    }
 
-.container{
-  max-width:700px;
-  margin:0 auto;
-  padding:60px 20px;
-}
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 520px at 20% -10%, rgba(255,255,255,.08), transparent 60%),
+        radial-gradient(900px 520px at 80% 0%, rgba(255,255,255,.05), transparent 60%),
+        radial-gradient(900px 520px at 50% 110%, rgba(255,255,255,.06), transparent 60%),
+        var(--bg);
+    }
+    a{ color:inherit; }
+    .wrap{
+      width: min(var(--max), 100%);
+      margin: 0 auto;
+      padding: 0 18px;
+    }
 
-.profile{
-  width:180px;
-  height:180px;
-  border-radius:50%;
-  object-fit:cover;
-  border:4px solid #fff;
-  box-shadow:0 20px 60px rgba(0,0,0,.7);
-  margin-bottom:25px;
-}
+    /* NAV */
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(10,10,10,.62);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-in{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding: 14px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight: 800;
+      letter-spacing:.2px;
+      white-space:nowrap;
+    }
+    .brand-dot{
+      width:10px;height:10px;border-radius:50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(255,255,255,.08);
+    }
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .menu a{
+      text-decoration:none;
+      color: var(--muted);
+      font-weight: 650;
+      font-size: 14px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      transition: .2s;
+    }
+    .menu a:hover{
+      color: var(--text);
+      background: rgba(255,255,255,.06);
+    }
+    .menu .phone{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
+      color: var(--text);
+    }
 
-h1{
-  margin:10px 0;
-  font-size:32px;
-}
+    /* HERO */
+    .hero{
+      padding: 64px 0 22px;
+      min-height: 78vh;
+      display:grid;
+      align-items:center;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+    }
+    @media (max-width: 920px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .menu{ gap:10px; }
+    }
 
-.info{
-  color:#aaa;
-  margin-bottom:20px;
-}
+    .panel{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .panel-in{ padding: 28px; }
 
-.badge{
-  display:inline-block;
-  background:#111;
-  padding:8px 14px;
-  margin:5px;
-  border-radius:20px;
-  font-size:14px;
-  border:1px solid #222;
-}
+    .kicker{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.22);
+      color: var(--muted);
+      font-weight: 650;
+      font-size: 13px;
+    }
 
-.buttons{
-  margin-top:30px;
-}
+    h1{
+      margin: 14px 0 10px;
+      font-size: 54px;
+      letter-spacing: -1px;
+      line-height: 1.06;
+    }
+    @media (max-width: 520px){
+      h1{ font-size: 40px; }
+    }
 
-.btn{
-  display:inline-block;
-  margin:10px;
-  padding:14px 24px;
-  background:#111;
-  color:#fff;
-  text-decoration:none;
-  border-radius:12px;
-  font-weight:bold;
-  transition:0.3s;
-  border:1px solid #222;
-}
+    .lead{
+      margin: 0;
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.65;
+    }
 
-.btn:hover{
-  background:#3b82f6;
-  transform:translateY(-2px);
-}
-</style>
+    .cta{
+      margin-top: 18px;
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      text-decoration:none;
+      font-weight: 800;
+      font-size: 14px;
+      transition: .2s;
+    }
+    .btn:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.07);
+    }
+    .btn.primary{
+      background: #fff;
+      color:#0b0b0b;
+      border-color: transparent;
+    }
+
+    /* RIGHT CARD */
+    .profile-card{
+      display:grid;
+      gap: 12px;
+    }
+    .avatar{
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.25);
+      overflow:hidden;
+    }
+    .avatar-in{
+      padding: 18px;
+      display:flex;
+      gap: 14px;
+      align-items:center;
+    }
+    .photo{
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,.85);
+      box-shadow: 0 16px 40px rgba(0,0,0,.55);
+      flex: 0 0 auto;
+    }
+    .who{
+      display:grid;
+      gap: 2px;
+      min-width: 0;
+    }
+    .who b{ font-size: 16px; }
+    .who span{
+      color: var(--muted);
+      font-size: 13px;
+      overflow:hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 8px;
+      padding: 16px 18px 18px;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,.02);
+    }
+    .chip{
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      color: var(--muted);
+      font-weight: 650;
+      font-size: 13px;
+    }
+
+    /* SECTION: CARDS */
+    section{ padding: 40px 0; }
+    .section-title{
+      text-align:center;
+      margin: 0 0 14px;
+      font-size: 38px;
+      letter-spacing: -.6px;
+    }
+    .section-sub{
+      text-align:center;
+      margin: 0 auto 22px;
+      max-width: 70ch;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 980px){
+      .cards{ grid-template-columns: 1fr; }
+    }
+    .card{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .icon{
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display:grid;
+      place-items:center;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.22);
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+    .card h3{
+      margin: 0 0 8px;
+      font-size: 18px;
+      letter-spacing: -.2px;
+    }
+    .card p{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* CTA BLOCK */
+    .big-cta{
+      padding: 56px 0 10px;
+    }
+    .cta-box{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: 22px;
+      padding: 44px 18px;
+      text-align:center;
+      box-shadow: var(--shadow);
+    }
+    .cta-box h2{
+      margin: 0 0 10px;
+      font-size: 40px;
+      letter-spacing: -.7px;
+    }
+    @media (max-width:520px){
+      .cta-box h2{ font-size: 30px; }
+    }
+    .cta-box p{
+      margin: 0 auto 18px;
+      max-width: 75ch;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* FOOTER */
+    footer{
+      border-top: 1px solid var(--line);
+      background: rgba(0,0,0,.25);
+      margin-top: 40px;
+      padding: 26px 0;
+    }
+    .foot{
+      display:grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 18px;
+      align-items:start;
+    }
+    @media (max-width: 980px){
+      .foot{ grid-template-columns: 1fr; }
+    }
+    .foot h4{
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .foot p, .foot a{
+      margin: 0;
+      color: var(--muted);
+      text-decoration:none;
+      line-height: 1.8;
+      font-size: 14px;
+    }
+    .social{
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      margin-top: 10px;
+    }
+    .social a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      transition:.2s;
+      color: var(--text);
+      font-weight: 900;
+    }
+    .social a:hover{ transform: translateY(-2px); background: rgba(255,255,255,.07); }
+    .copy{
+      margin-top: 16px;
+      color: var(--muted2);
+      font-size: 13px;
+      text-align:center;
+    }
+  </style>
 </head>
 
 <body>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="wrap">
+      <div class="nav-in">
+        <div class="brand"><span class="brand-dot"></span> Sherzod</div>
+        <div class="menu">
+          <a href="#home">Bosh sahifa</a>
+          <a href="#about">Men haqimda</a>
+          <a href="#contact">Bog‘lanish</a>
 
-<div class="container">
+          <!-- TELEFON: xohlasang olib tashla (xavfsizlik uchun) -->
+          <a class="phone" href="tel:+998502220600">📞 +998 50 222 06 00</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<img src="profile.jpg" class="profile">
+  <!-- HERO -->
+  <div id="home" class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="panel">
+          <div class="panel-in">
+            <div class="kicker">🎓 2-kurs • Kiberxavfsizlik injiniring • Kokand University</div>
 
-<h1>Hamidov Sherzodbek</h1>
+            <h1>Hamidov Sherzodbek</h1>
 
-<div class="info">
-2-kurs • Kiberxavfsizlik injiniring • Kokand University
-</div>
+            <p class="lead">
+              Farg‘ona viloyati, Rishton tumani. Kiberxavfsizlik yo‘nalishi talabasi.
+              Boks bilan 6 yil shug‘ullanganman, 2 marta viloyat chempioni.
+            </p>
 
-<div>
-<span class="badge">Farg‘ona viloyat</span>
-<span class="badge">Boks: 6 yil</span>
-<span class="badge">2 marta viloyat chempioni</span>
-</div>
+            <div class="cta">
+              <a class="btn primary" href="#about">Men haqimda batafsil →</a>
+              <a class="btn" href="#contact">Bog‘lanish</a>
+            </div>
+          </div>
+        </div>
 
-<div class="buttons">
-<a class="btn" href="https://t.me/kham1d0v_712" target="_blank">Telegram</a>
-<a class="btn" href="https://instagram.com/kham1d0v_727" target="_blank">Instagram</a>
-<a class="btn" href="tel:+998502220600">Telefon</a>
-</div>
+        <div class="profile-card">
+          <div class="avatar">
+            <div class="avatar-in">
+              <!-- RASM: repo ichida "profile.jpg" bo‘lsin -->
+              <img class="photo" src="profile.jpg" alt="Profile photo">
+              <div class="who">
+                <b>Sherzod • Cybersecurity</b>
+                <span>Farg‘ona • Rishton • Zohidon</span>
+              </div>
+            </div>
+            <div class="chips">
+              <span class="chip">Telegram</span>
+              <span class="chip">Instagram</span>
+              <span class="chip">Minimal & dark</span>
+            </div>
+          </div>
 
-</div>
+          <div class="card">
+            <div class="icon">🛡️</div>
+            <h3>Yo‘nalish</h3>
+            <p>Kiberxavfsizlik injiniring. Hozir fokus: asoslar, odatlar, amaliyot.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- CARDS SECTION -->
+  <section id="about">
+    <div class="wrap">
+      <h2 class="section-title">Nima taqdim etaman</h2>
+      <p class="section-sub">
+        Bu “ish portfolio” emas — Instagram/Telegram uchun tanishuv sahifasi.
+        Shunga qaramay, ko‘rinishi professional bo‘lsin.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <div class="icon">👤</div>
+          <h3>Qisqa tanishtiruv</h3>
+          <p>Ism, yo‘nalish, universitet, shahar. Keraksiz ma’lumot yo‘q.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🥊</div>
+          <h3>Sport va intizom</h3>
+          <p>Boks: 6 yil. 2 marta viloyat chempioni. Natija muhim.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🔗</div>
+          <h3>Linklar</h3>
+          <p>Telegram, Instagram va xohlasang telefon (lekin xavfsizlikni o‘yla).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIG CTA -->
+  <section class="big-cta" id="contact">
+    <div class="wrap">
+      <div class="cta-box">
+        <h2>Bog‘lanishga tayyormisan?</h2>
+        <p>
+          Eng tez aloqa — Telegram. Instagram ham bor. Telefonni ko‘rsatish xavfli bo‘lishi mumkin,
+          lekin sen xohlaganing uchun qo‘ydim.
+        </p>
+        <div class="cta" style="justify-content:center;">
+          <!-- LINKLAR: mana shu joylarni tekshir -->
+          <a class="btn primary" href="https://t.me/kham1d0v_712" target="_blank" rel="noreferrer">Telegram →</a>
+          <a class="btn" href="https://instagram.com/kham1d0v_727" target="_blank" rel="noreferrer">Instagram</a>
+          <a class="btn" href="tel:+998502220600">Telefon</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <h4>Hamidov Sherzodbek</h4>
+          <p>2-kurs • Kokand University • Kiberxavfsizlik injiniring</p>
+          <p style="margin-top:10px;">Farg‘ona viloyati, Rishton tumani</p>
+        </div>
+
+        <div>
+          <h4>Tezkor havolalar</h4>
+          <p><a href="#home">Bosh sahifa</a></p>
+          <p><a href="#about">Men haqimda</a></p>
+          <p><a href="#contact">Bog‘lanish</a></p>
+        </div>
+
+        <div>
+          <h4>Bog‘lanish</h4>
+          <div class="social">
+            <a title="Telegram" href="https://t.me/kham1d0v_712" target="_blank" rel="noreferrer">TG</a>
+            <a title="Instagram" href="https://instagram.com/kham1d0v_727" target="_blank" rel="noreferrer">IG</a>
+            <a title="Telefon" href="tel:+998502220600">☎</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="copy">© 2026 Sherzod • GitHub Pages</div>
+    </div>
+  </footer>
 </body>
 </html>
