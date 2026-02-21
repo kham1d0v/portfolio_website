@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sherzod — Shaxsiy sahifa</title>
+  <meta name="description" content="Sherzod — kiberxavfsizlik yo‘nalishi talabasining shaxsiy tanishtiruv sahifasi." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1b33;
+      --muted:#a7b0c0;
+      --text:#eaf0ff;
+      --line:rgba(255,255,255,.08);
+      --accent:#3b82f6;
+      --accent2:#22c55e;
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
+      background:
+        radial-gradient(900px 500px at 15% 10%, rgba(59,130,246,.25), transparent 60%),
+        radial-gradient(700px 400px at 85% 20%, rgba(34,197,94,.18), transparent 55%),
+        radial-gradient(900px 600px at 60% 90%, rgba(168,85,247,.14), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:32px 18px 60px;
+    }
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+      backdrop-filter: blur(10px);
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      box-shadow:0 0 0 6px rgba(59,130,246,.12);
+    }
+    .nav{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .nav a{
+      text-decoration:none;
+      color:var(--muted);
+      font-weight:600;
+      font-size:14px;
+      padding:8px 10px;
+      border-radius:999px;
+      transition:.2s;
+    }
+    .nav a:hover{color:var(--text); background:rgba(255,255,255,.06)}
+    .hero{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns: 1.3fr .9fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width:860px){
+      .hero{grid-template-columns:1fr}
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.04);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .card-in{
+      padding:22px;
+    }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+      font-weight:600;
+      background:rgba(0,0,0,.08);
+    }
+    .kicker b{color:var(--text)}
+    h1{
+      margin:14px 0 10px;
+      font-size:44px;
+      line-height:1.12;
+      letter-spacing:-.6px;
+    }
+    @media (max-width:520px){ h1{font-size:36px} }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      max-width:58ch;
+    }
+    .cta{
+      margin-top:16px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:11px 14px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      text-decoration:none;
+      font-weight:800;
+      font-size:14px;
+      transition:.2s;
+      background:rgba(255,255,255,.04);
+    }
+    .btn.primary{
+      background:linear-gradient(135deg, rgba(59,130,246,.95), rgba(34,197,94,.85));
+      border-color:transparent;
+      color:#07101f;
+    }
+    .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.07)}
+    .btn.primary:hover{filter:brightness(1.03)}
+    .mini{
+      margin-top:18px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .pill{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px dashed rgba(255,255,255,.14);
+      background:rgba(0,0,0,.10);
+    }
+    .side{
+      display:grid;
+      gap:12px;
+    }
+    .avatar{
+      aspect-ratio: 16/10;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(59,130,246,.22), rgba(34,197,94,.16)),
+        radial-gradient(400px 200px at 25% 30%, rgba(255,255,255,.16), transparent 60%),
+        rgba(0,0,0,.12);
+      display:flex;
+      align-items:flex-end;
+      padding:16px;
+      position:relative;
+      overflow:hidden;
+    }
+    .avatar::after{
+      content:"";
+      position:absolute;
+      inset:-80px -60px auto auto;
+      width:220px;height:220px;
+      background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.25), transparent 60%);
+      transform:rotate(18deg);
+    }
+    .avatar .name{
+      position:relative;
+      z-index:1;
+      font-weight:900;
+      font-size:18px;
+    }
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    @media (max-width:860px){ .grid{grid-template-columns:1fr} }
+    .item h2{
+      margin:0 0 6px;
+      font-size:16px;
+      letter-spacing:-.2px;
+    }
+    .item p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .section{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width:860px){ .section{grid-template-columns:1fr} }
+    .list{
+      margin:10px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+    .li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:12px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:rgba(0,0,0,.10);
+    }
+    .badge{
+      min-width:34px;
+      height:34px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      background:rgba(59,130,246,.16);
+      border:1px solid rgba(59,130,246,.28);
+      color:#cfe2ff;
+    }
+    .footer{
+      margin-top:22px;
+      padding:18px 4px 0;
+      color:rgba(167,176,192,.85);
+      font-size:13px;
+      text-align:center;
+    }
+    .small{
+      font-size:12px;
+      color:rgba(167,176,192,.75);
+      margin-top:8px;
+    }
+    .note{
+      margin-top:14px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,165,0,.07);
+      color:rgba(255,255,255,.88);
+      font-size:13px;
+    }
+    .note b{color:#fff}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand"><span class="dot"></span> Sherzod</div>
+      <div class="nav">
+        <a href="#about">Men haqimda</a>
+        <a href="#skills">Yo‘nalish</a>
+        <a href="#links">Aloqa</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="card">
+        <div class="card-in">
+          <div class="kicker">🎓 <b>Kiberxavfsizlik</b> • 1-kurs talaba</div>
+          <h1>Salom, men Sherzod.<br/>O‘rganaman, quraman, kuchayaman.</h1>
+          <p class="sub">
+            Meni tanish uchun qisqa sahifa: qiziqishlarim, yo‘nalishim va bog‘lanish linklarim.
+            Bu sahifada shaxsiy xavfsizlik uchun ortiqcha ma’lumot yozilmaydi.
+          </p>
+
+          <div class="cta">
+            <a class="btn primary" href="#links">🔗 Meni topish</a>
+            <a class="btn" href="#skills">🧠 Nimalarni o‘rganyapman</a>
+          </div>
+
+          <div class="mini">
+            <span class="pill">Cloud security</span>
+            <span class="pill">Linux</span>
+            <span class="pill">Network basics</span>
+            <span class="pill">Telegram bot</span>
+          </div>
+
+          <div class="note">
+            <b>Ogohlantirish:</b> bu yerga telefon raqam, uy manzil, passportga o‘xshash narsa qo‘shma.
+            Odamlar ko‘radi — hammasi ham yaxshi niyatda bo‘lmaydi.
+          </div>
+        </div>
+      </div>
+
+      <div class="side">
+        <div class="card">
+          <div class="card-in">
+            <div class="avatar">
+              <div class="name">Sherzod • Cybersecurity</div>
+            </div>
+            <div class="small">
+              Avatar o‘rniga keyin rasm qo‘shamiz (xohlasang).
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-in">
+            <div class="grid">
+              <div class="item">
+                <h2>Ma’lumot</h2>
+                <p>Talaba • Kiberxavfsizlik</p>
+              </div>
+              <div class="item">
+                <h2>Maqsad</h2>
+                <p>Real skill + real project</p>
+              </div>
+              <div class="item">
+                <h2>Qiziqish</h2>
+                <p>Cloud, himoya, botlar</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div id="about" class="card">
+        <div class="card-in">
+          <h2>Men haqimda</h2>
+          <ul class="list">
+            <li class="li">
+              <div class="badge">1</div>
+              <div>
+                <b>Yo‘nalish:</b> kiberxavfsizlik (boshlang‘ich daraja, lekin har kuni o‘sish).
+                <div class="small">“Ko‘p gap” emas — natija chiqarish.</div>
+              </div>
+            </li>
+            <li class="li">
+              <div class="badge">2</div>
+              <div>
+                <b>Nima uchun shu soha:</b> tizimlarni himoya qilish, xavfsiz ishlashni o‘rganish.
+              </div>
+            </li>
+            <li class="li">
+              <div class="badge">3</div>
+              <div>
+                <b>Hozirgi fokus:</b> Linux, tarmoqlar, cloud asoslari va xavfsizlik.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="skills" class="card">
+        <div class="card-in">
+          <h2>Nimalarni o‘rganyapman</h2>
+          <ul class="list">
+            <li class="li"><div class="badge">🛡️</div><div><b>Security basics</b><div class="small">risk, himoya, odatlar</div></div></li>
+            <li class="li"><div class="badge">🐧</div><div><b>Linux</b><div class="small">terminal, fayl tizimi, ruxsatlar</div></div></li>
+            <li class="li"><div class="badge">🌐</div><div><b>Network</b><div class="small">IP/DNS/HTTP, trafik tushunish</div></div></li>
+            <li class="li"><div class="badge">🤖</div><div><b>Botlar</b><div class="small">Telegram + AI (bosqichma-bosqich)</div></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="links" class="card" style="margin-top:12px;">
+      <div class="card-in">
+        <h2>Aloqa linklari</h2>
+        <p class="sub" style="margin-top:6px;">
+          Pastdagi joylarni o‘zingniki bilan almashtir. Qancha kam bo‘lsa, shuncha xavfsiz.
+        </p>
+        <div class="cta" style="margin-top:12px;">
+          <a class="btn" href="https://t.me/USERNAME" target="_blank" rel="noreferrer">Telegram</a>
+          <a class="btn" href="https://instagram.com/USERNAME" target="_blank" rel="noreferrer">Instagram</a>
+          <a class="btn" href="mailto:you@example.com">Email</a>
+        </div>
+        <div class="small">
+          <b>USERNAME</b> va <b>you@example.com</b> ni o‘zingniki bilan almashtir.
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      © 2026 Sherzod • Shaxsiy sahifa
+    </div>
+  </div>
+</body>
+</html>
