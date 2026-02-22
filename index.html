@@ -32,7 +32,7 @@
       overflow-x:hidden;
     }
 
-    /* BACKGROUND */
+    /* Background */
     body::before{
       content:"";
       position:fixed;
@@ -66,7 +66,7 @@
       padding: 0 18px;
     }
 
-    /* NAV */
+    /* Nav */
     .nav{
       position:sticky;
       top:0;
@@ -83,15 +83,12 @@
       gap:12px;
       padding: 8px 0;
     }
-
-    /* LEFT GROUP (brand + views) */
     .nav-left{
       display:flex;
       align-items:center;
       gap:10px;
       min-width: 0;
     }
-
     .brand{
       display:flex;
       align-items:center;
@@ -132,7 +129,6 @@
       background: rgba(255,255,255,.06);
     }
 
-    /* Phone pill */
     .phone-pill{
       display:inline-flex;
       align-items:center;
@@ -160,7 +156,7 @@
     }
     .phone-pill svg{ width:18px; height:18px; opacity:.92; }
 
-    /* ===== VIEWS COUNTER (NAV) ===== */
+    /* Views pill */
     .views{
       display:inline-flex;
       align-items:center;
@@ -186,14 +182,13 @@
       .views{ display:none; }
     }
 
-    /* HERO */
+    /* Hero */
     .hero{
       padding: 54px 0 22px;
       min-height: 68vh;
       display:grid;
       place-items:center;
     }
-
     .hero-card{
       width:100%;
       border:1px solid var(--line);
@@ -214,7 +209,6 @@
       transform: rotate(18deg);
       pointer-events:none;
     }
-
     .hero-in{
       padding: 34px 22px 28px;
       display:grid;
@@ -222,7 +216,6 @@
       text-align:center;
       gap: 12px;
     }
-
     .avatar{
       width: 120px;
       height: 120px;
@@ -232,7 +225,6 @@
       box-shadow: 0 18px 60px rgba(0,0,0,.65);
       background: rgba(0,0,0,.25);
     }
-
     h1{
       margin: 6px 0 0;
       font-size: 52px;
@@ -243,7 +235,6 @@
       h1{ font-size: 38px; }
       .hero{ padding-top: 46px; }
     }
-
     .meta{
       color: var(--muted);
       font-weight: 700;
@@ -256,7 +247,6 @@
       line-height: 1.7;
       font-size: 15.5px;
     }
-
     .tags{
       display:flex;
       flex-wrap:wrap;
@@ -275,7 +265,7 @@
       letter-spacing: .1px;
     }
 
-    /* BUTTONS */
+    /* Buttons */
     .actions{
       display:flex;
       flex-wrap:wrap;
@@ -330,15 +320,12 @@
       pointer-events:none;
       z-index:0;
     }
-    .btn:hover::before{
-      animation: shimmerMove .85s ease-out forwards;
-    }
-    @keyframes shimmerMove{
-      0%{ left:-120%; }
-      100%{ left:130%; }
-    }
+    .btn:hover::before{ animation: shimmerMove .85s ease-out forwards; }
+    @keyframes shimmerMove{ 0%{ left:-120%; } 100%{ left:130%; } }
 
-    /* RIPPLE */
+    .btn svg{ width:20px; height:20px; }
+
+    /* Ripple */
     .ripple{
       position:absolute;
       border-radius:999px;
@@ -357,7 +344,7 @@
       .btn:hover{ transform:none; }
     }
 
-    /* SECTIONS */
+    /* Sections */
     section{ padding: 52px 0; }
 
     .section-title{
@@ -419,7 +406,6 @@
       font-size: 18px;
       letter-spacing: -.2px;
     }
-
     .card p{
       margin: 0;
       color: var(--muted);
@@ -451,7 +437,7 @@
       box-shadow: 0 0 0 6px rgba(255,255,255,.08);
     }
 
-    /* TRAVEL */
+    /* Travel */
     .travel-grid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -492,7 +478,7 @@
       font-size: 13px;
     }
 
-    /* CONTACT */
+    /* Contact */
     .cta-box{
       border:1px solid var(--line);
       border-radius: 26px;
@@ -519,7 +505,7 @@
       font-size: 15px;
     }
 
-    /* FOOTER */
+    /* Footer */
     footer{
       margin-top: 48px;
       border-top: 1px solid var(--line);
@@ -594,9 +580,30 @@
           </div>
 
           <div class="actions">
-            <a class="btn" href="https://t.me/kham1d0v_712" target="_blank" rel="noreferrer">Telegram</a>
-            <a class="btn" href="https://instagram.com/kham1d0v_727" target="_blank" rel="noreferrer">Instagram</a>
-            <a class="btn" href="tel:+998502220600">Telefon</a>
+            <a class="btn" href="https://t.me/kham1d0v_712" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M21 5.3L3.9 12.1c-1.2.5-1.2 1.2-.2 1.5l4.4 1.4 10.1-6.4c.5-.3.9-.1.5.2l-8.2 7.5-.3 4.3c.4 0 .6-.2.9-.5l2.2-2.2 4.5 3.3c.8.4 1.4.2 1.6-.8l2.8-13c.3-1.2-.5-1.7-1.4-1.3z"
+                      stroke="white" stroke-opacity=".92" stroke-width="1.6" stroke-linejoin="round"/>
+              </svg>
+              Telegram
+            </a>
+
+            <a class="btn" href="https://instagram.com/kham1d0v_727" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7.5 3.8h9c2 0 3.7 1.7 3.7 3.7v9c0 2-1.7 3.7-3.7 3.7h-9c-2 0-3.7-1.7-3.7-3.7v-9c0-2 1.7-3.7 3.7-3.7z" stroke="white" stroke-opacity=".92" stroke-width="1.6"/>
+                <path d="M12 16.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4z" stroke="white" stroke-opacity=".92" stroke-width="1.6"/>
+                <path d="M17.4 6.6h.01" stroke="white" stroke-opacity=".92" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+              Instagram
+            </a>
+
+            <a class="btn" href="tel:+998502220600">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7.3 3.8l2.9 2.1c.6.4.8 1.2.5 1.8L9.6 10c.8 1.5 2 2.8 3.3 4.1 1.3 1.3 2.6 2.4 4.1 3.3l2.3-1.1c.6-.3 1.4-.1 1.8.5l2.1 2.9c.4.6.3 1.4-.3 1.9-1.1.9-2.5 1.4-4 1.3-3.5-.2-7-2.3-10.1-5.4C5.7 14.3 3.6 10.8 3.4 7.3c-.1-1.5.4-2.9 1.3-4 .5-.6 1.3-.7 1.9-.3z"
+                      stroke="white" stroke-opacity=".92" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Telefon
+            </a>
           </div>
         </div>
       </div>
@@ -607,12 +614,17 @@
   <section id="about">
     <div class="wrap">
       <h2 class="section-title">Qisqa tanishtiruv</h2>
-      <p class="section-sub"></p>
+      <p class="section-sub">Minimal profil: kimligim, yo‘nalishim va intizom manbai — qisqa va aniq.</p>
 
       <div class="grid">
         <article class="card">
           <div class="card-top">
-            <div class="ic" aria-hidden="true">👤</div>
+            <div class="ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12z" stroke="white" stroke-opacity=".92" stroke-width="1.6"/>
+                <path d="M4.5 20.2c1.6-3 4.3-4.7 7.5-4.7s5.9 1.7 7.5 4.7" stroke="white" stroke-opacity=".92" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
             <h3>Kimman</h3>
           </div>
           <p>Hamidov Sherzodbek. Kokand University 2-kurs talaba. Yo‘nalish: kiberxavfsizlik injiniring.</p>
@@ -625,7 +637,12 @@
 
         <article class="card">
           <div class="card-top">
-            <div class="ic" aria-hidden="true">🛡️</div>
+            <div class="ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3l8 4v6c0 5-3.3 9.1-8 8-4.7 1.1-8-3-8-8V7l8-4z" stroke="white" stroke-opacity=".92" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="M9.2 12.2l1.9 1.9 3.9-4.2" stroke="white" stroke-opacity=".92" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
             <h3>Yo‘nalish / Fokus</h3>
           </div>
           <p>Kiberxavfsizlikni “asos + odat + amaliyot” orqali olib ketaman: tizimni tushunish va keyin himoya.</p>
@@ -638,7 +655,13 @@
 
         <article class="card">
           <div class="card-top">
-            <div class="ic" aria-hidden="true">🥊</div>
+            <div class="ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7 20h10" stroke="white" stroke-opacity=".92" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M9 20l1-7 4-8 3 2-4 7-1 6" stroke="white" stroke-opacity=".92" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="M10 13l4 2" stroke="white" stroke-opacity=".92" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
             <h3>Sport / Intizom</h3>
           </div>
           <p>Boks: 6 yil. 2 marta viloyat chempioni. Bu menga intizom, reja, sabr va natija beradi.</p>
@@ -656,7 +679,7 @@
   <section id="travel">
     <div class="wrap">
       <h2 class="section-title">Sayohat qilgan davlatlar</h2>
-      <p class="section-sub">Qisqa geografiya: ko‘rgan shaharlar, atmosferasi va nima foyda bergani.</p>
+      <p class="section-sub">Ko‘rgan shaharlar: muhit, ritm va men olgan xulosalar.</p>
 
       <div class="travel-grid">
         <article class="card">
@@ -667,7 +690,9 @@
               <div class="cities">Yekaterinburg • Moskva</div>
             </div>
           </div>
-          <p>Yekaterinburgda tartib va ritm tez. Moskva — infratuzilma va texnologiya muhiti.</p>
+          <p>
+            Yekaterinburg — tartib va tez ritm. Moskva — katta infratuzilma, texnologiya muhitini ko‘rib motivatsiya oshadi.
+          </p>
           <ul class="bullets">
             <li>Shahar intizomi: vaqt + reja</li>
             <li>Infratuzilma: katta tizim ishlashi</li>
@@ -683,11 +708,13 @@
               <div class="cities">Astana • Almati</div>
             </div>
           </div>
-          <p>Astana — modern va tartibli. Almati — tirik shahar, energiya va tog‘ havosi.</p>
+          <p>
+            Astana — modern va sokin “tartib” kayfiyati. Almati — energiya, tog‘ havosi va tez harakat.
+          </p>
           <ul class="bullets">
             <li>Astana: reja + tartib</li>
             <li>Almati: energiya + harakat</li>
-            <li>Xulosa: yangi joy fikrni kengaytiradi</li>
+            <li>Xulosa: moslashuv — kuch</li>
           </ul>
         </article>
 
@@ -699,11 +726,13 @@
               <div class="cities">Osh</div>
             </div>
           </div>
-          <p>Osh — tarixiy ruh, soddalik, tog‘lar yaqinligi. Xotirjam muhit fokusni oshiradi.</p>
+          <p>
+            Osh — tarixiy ruh, soddalik va tog‘lar yaqinligi. Xotirjam muhit fokusni kuchaytiradi.
+          </p>
           <ul class="bullets">
-            <li>Osh: soddalik + mehmondo‘stlik</li>
+            <li>Soddalik + mehmondo‘stlik</li>
             <li>Ritm: shoshmasdan, aniq yurish</li>
-            <li>Xulosa: xotirjamlik fokusni kuchaytiradi</li>
+            <li>Xulosa: tinchlik — konsentratsiya</li>
           </ul>
         </article>
       </div>
@@ -715,7 +744,7 @@
     <div class="wrap">
       <div class="cta-box">
         <h2>Bog‘lanish</h2>
-        <p></p>
+        <p>Hamkorlik, savol yoki taklif bo‘lsa — tez va to‘g‘ridan-to‘g‘ri yozing.</p>
 
         <div class="actions">
           <a class="btn" href="https://t.me/kham1d0v_712" target="_blank" rel="noreferrer">Telegram</a>
@@ -733,7 +762,7 @@
   </footer>
 
   <script>
-    // Ripple (faqat .btn uchun). Link ishlashiga halal bermaydi.
+    // Ripple (faqat .btn uchun)
     document.querySelectorAll('.btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const rect = btn.getBoundingClientRect();
@@ -749,19 +778,20 @@
     });
 
     // =========================
-    // Views Counter (Professional)
+    // Views Counter (Unique + Total)
     // =========================
 
-    // Namespace/key: faqat kichik harf/raqam/tire ishlat.
+    // Qoidalar: namespace/key faqat kichik harf/raqam/tire
     const NAMESPACE = "kham1d0v-portfolio";
     const KEY_TOTAL = "total-views";
     const KEY_UNIQUE = "unique-views";
 
-    // Unique view: 6 soatda 1 marta sanaydi
+    // 6 soatda 1 marta unique sanaydi
     const UNIQUE_TTL_MS = 6 * 60 * 60 * 1000;
     const UNIQUE_LS_KEY = "kham1d0v_last_unique_hit_ts";
 
     const viewsEl = document.getElementById("viewsNum");
+    const LS_LAST_TOTAL = "kham1d0v_last_total_views";
 
     async function fetchJSON(url, timeoutMs = 5500) {
       const controller = new AbortController();
@@ -775,16 +805,20 @@
       }
     }
 
-    function formatNum(n) {
-      try { return Number(n).toLocaleString(); } catch { return String(n); }
-    }
-
     function setViewsUI(val) {
       if (!viewsEl) return;
-      viewsEl.textContent = (val === null || val === undefined) ? "—" : formatNum(val);
+      if (val === null || val === undefined) { viewsEl.textContent = "—"; return; }
+      viewsEl.textContent = Number(val).toLocaleString();
     }
 
-    const LS_LAST_TOTAL = "kham1d0v_last_total_views";
+    function shouldCountUniqueNow() {
+      const last = Number(localStorage.getItem(UNIQUE_LS_KEY) || "0");
+      return (Date.now() - last) > UNIQUE_TTL_MS;
+    }
+
+    function markUniqueCounted() {
+      localStorage.setItem(UNIQUE_LS_KEY, String(Date.now()));
+    }
 
     async function getTotalViews() {
       const url = `https://api.countapi.xyz/get/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY_TOTAL)}`;
@@ -800,44 +834,33 @@
 
     async function hitUnique() {
       const url = `https://api.countapi.xyz/hit/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY_UNIQUE)}`;
-      const data = await fetchJSON(url);
-      return data?.value;
-    }
-
-    function shouldCountUniqueNow() {
-      const last = Number(localStorage.getItem(UNIQUE_LS_KEY) || "0");
-      return (Date.now() - last) > UNIQUE_TTL_MS;
-    }
-
-    function markUniqueCounted() {
-      localStorage.setItem(UNIQUE_LS_KEY, String(Date.now()));
+      await fetchJSON(url);
     }
 
     async function initViews() {
-      // Avval cached (fallback) ni ko‘rsat
+      // Fallback: cached ko‘rsat
       const cached = localStorage.getItem(LS_LAST_TOTAL);
       if (cached) setViewsUI(cached);
 
       try {
         if (shouldCountUniqueNow()) {
-          await hitUnique(); // unique stat
-          const total = await hitTotalViews(); // total++
+          await hitUnique();
+          const total = await hitTotalViews();
           setViewsUI(total);
           localStorage.setItem(LS_LAST_TOTAL, String(total));
           markUniqueCounted();
           return;
         }
 
-        // Unique bo‘lmasa: faqat total ni o‘qi
         const total = await getTotalViews();
         if (total !== undefined) {
           setViewsUI(total);
           localStorage.setItem(LS_LAST_TOTAL, String(total));
         } else {
-          if (!cached) setViewsUI("—");
+          if (!cached) setViewsUI(null);
         }
       } catch (e) {
-        if (!cached) setViewsUI("—");
+        if (!cached) setViewsUI(null);
       }
     }
 
