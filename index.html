@@ -32,7 +32,7 @@
       overflow-x:hidden;
     }
 
-    /* BACKGROUND (uzun scroll + cover) */
+    /* BACKGROUND */
     body::before{
       content:"";
       position:fixed;
@@ -49,7 +49,6 @@
       filter: contrast(1.05) saturate(1.05);
       transform: scale(1.02);
     }
-    /* qoraroq overlay */
     body::after{
       content:"";
       position:fixed;
@@ -67,7 +66,7 @@
       padding: 0 18px;
     }
 
-    /* NAV (shilliq qavatni kichraytirdim) */
+    /* NAV */
     .nav{
       position:sticky;
       top:0;
@@ -82,8 +81,17 @@
       align-items:center;
       justify-content:space-between;
       gap:12px;
-      padding: 8px 0; /* oldin 14px edi */
+      padding: 8px 0;
     }
+
+    /* LEFT GROUP (brand + views) */
+    .nav-left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width: 0;
+    }
+
     .brand{
       display:flex;
       align-items:center;
@@ -109,7 +117,7 @@
       color: var(--muted);
       font-weight: 750;
       font-size: 13.5px;
-      padding: 8px 10px; /* oldin 10 12 edi */
+      padding: 8px 10px;
       border-radius: 999px;
       transition: .18s ease;
       outline: none;
@@ -124,12 +132,12 @@
       background: rgba(255,255,255,.06);
     }
 
-    /* Phone pill (ikonka pro qildim) */
+    /* Phone pill */
     .phone-pill{
       display:inline-flex;
       align-items:center;
       gap:10px;
-      padding: 8px 12px; /* oldin 10 14 edi */
+      padding: 8px 12px;
       border-radius:999px;
       border:1px solid var(--line);
       background: rgba(255,255,255,.06);
@@ -152,10 +160,36 @@
     }
     .phone-pill svg{ width:18px; height:18px; opacity:.92; }
 
-    /* HERO (yuqori joyni ham bir oz qisqartirdim) */
+    /* ===== VIEWS COUNTER (NAV) ===== */
+    .views{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-weight: 850;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .views-dot{
+      width:8px;height:8px;border-radius:999px;
+      background: rgba(255,255,255,.85);
+      box-shadow: 0 0 0 6px rgba(255,255,255,.10);
+    }
+    .views #viewsNum{ color: var(--text); }
+    .views-label{ color: var(--muted2); font-weight: 800; }
+
+    @media (max-width:560px){
+      .views{ display:none; }
+    }
+
+    /* HERO */
     .hero{
-      padding: 54px 0 22px; /* oldin 78px */
-      min-height: 68vh;     /* oldin 78vh */
+      padding: 54px 0 22px;
+      min-height: 68vh;
       display:grid;
       place-items:center;
     }
@@ -277,7 +311,6 @@
     }
     .btn svg{ opacity:.95; }
 
-    /* ===== Hover Shimmer ===== */
     .btn::before{
       content:"";
       position:absolute;
@@ -508,7 +541,16 @@
   <header class="nav">
     <div class="wrap">
       <div class="nav-in">
-        <div class="brand"><span class="dot"></span> Sherzod</div>
+        <div class="nav-left">
+          <div class="brand"><span class="dot"></span> Sherzod</div>
+
+          <!-- ✅ VIEWS (hamma ko‘radi) -->
+          <div class="views" id="views" title="Sayt ko‘rishlar soni">
+            <span class="views-dot"></span>
+            <span id="viewsNum">—</span>
+            <span class="views-label">views</span>
+          </div>
+        </div>
 
         <nav class="menu">
           <a href="#home">Bosh sahifa</a>
@@ -518,7 +560,6 @@
 
           <a class="phone-pill" href="tel:+998502220600" aria-label="Telefon">
             <span class="p-ic" aria-hidden="true">
-              <!-- Pro icon (clean handset) -->
               <svg viewBox="0 0 24 24" fill="none">
                 <path
                   d="M7.3 3.8l2.9 2.1c.6.4.8 1.2.5 1.8L9.6 10c.8 1.5 2 2.8 3.3 4.1 1.3 1.3 2.6 2.4 4.1 3.3l2.3-1.1c.6-.3 1.4-.1 1.8.5l2.1 2.9c.4.6.3 1.4-.3 1.9-1.1.9-2.5 1.4-4 1.3-3.5-.2-7-2.3-10.1-5.4C5.7 14.3 3.6 10.8 3.4 7.3c-.1-1.5.4-2.9 1.3-4 .5-.6 1.3-.7 1.9-.3z"
@@ -538,9 +579,7 @@
       <div class="hero-card">
         <div class="hero-in">
           <img class="avatar" src="profile.jpg" alt="Hamidov Sherzodbek">
-
           <h1>Hamidov Sherzodbek</h1>
-
           <div class="meta">2-kurs • Kiberxavfsizlik injiniring • Kokand University</div>
 
           <p class="desc">
@@ -556,7 +595,6 @@
           </div>
 
           <div class="actions">
-            <!-- Telegramni oq emas, boshqa knopkalar bilan bir xil qildim -->
             <a class="btn" href="https://t.me/kham1d0v_712" target="_blank" rel="noreferrer">
               <svg viewBox="0 0 24 24" fill="none">
                 <path d="M21 5.3L3.9 12.1c-1.2.5-1.2 1.2-.2 1.5l4.4 1.4 10.1-6.4c.5-.3.9-.1.5.2l-8.2 7.5-.3 4.3c.4 0 .6-.2.9-.5l2.2-2.2 4.5 3.3c.8.4 1.4.2 1.6-.8l2.8-13c.3-1.2-.5-1.7-1.4-1.3z"
@@ -587,12 +625,11 @@
     </div>
   </main>
 
-  <!-- ABOUT / CARDS -->
+  <!-- ABOUT -->
   <section id="about">
     <div class="wrap">
       <h2 class="section-title">Qisqa tanishtiruv</h2>
-      <p class="section-sub">
-      </p>
+      <p class="section-sub"></p>
 
       <div class="grid">
         <article class="card">
@@ -605,9 +642,7 @@
             </div>
             <h3>Kimman</h3>
           </div>
-          <p>
-            Hamidov Sherzodbek. Kokand University 2-kurs talaba. Yo‘nalish: kiberxavfsizlik injiniring.
-          </p>
+          <p>Hamidov Sherzodbek. Kokand University 2-kurs talaba. Yo‘nalish: kiberxavfsizlik injiniring.</p>
           <ul class="bullets">
             <li>Qiziqish: amaliy xavfsizlik, Linux, tarmoq asoslari</li>
             <li>Shior: “gap emas — natija”</li>
@@ -625,9 +660,7 @@
             </div>
             <h3>Yo‘nalish / Fokus</h3>
           </div>
-          <p>
-            Kiberxavfsizlikni “asos + odat + amaliyot” orqali olib ketaman: tizimni tushunish va keyin himoya.
-          </p>
+          <p>Kiberxavfsizlikni “asos + odat + amaliyot” orqali olib ketaman: tizimni tushunish va keyin himoya.</p>
           <ul class="bullets">
             <li>Linux: terminal, ruxsatlar, servislar</li>
             <li>Network: IP/DNS/HTTP, trafik tushunish</li>
@@ -646,9 +679,7 @@
             </div>
             <h3>Sport / Intizom</h3>
           </div>
-          <p>
-            Boks: 6 yil. 2 marta viloyat chempioni. Bu menga intizom, reja, sabr va natija beradi.
-          </p>
+          <p>Boks: 6 yil. 2 marta viloyat chempioni. Bu menga intizom, reja, sabr va natija beradi.</p>
           <ul class="bullets">
             <li>Rejim: muntazam mashg‘ulot</li>
             <li>Psixologiya: bosimda sokin qolish</li>
@@ -659,13 +690,11 @@
     </div>
   </section>
 
-  <!-- TRAVEL (yangi bo‘lim) -->
+  <!-- TRAVEL -->
   <section id="travel">
     <div class="wrap">
       <h2 class="section-title">Sayohat qilgan davlatlar</h2>
-      <p class="section-sub">
-        Qisqa geografiya: ko‘rgan shaharlar, atmosferasi va nima foyda bergani.
-      </p>
+      <p class="section-sub">Qisqa geografiya: ko‘rgan shaharlar, atmosferasi va nima foyda bergani.</p>
 
       <div class="travel-grid">
         <article class="card">
@@ -733,11 +762,9 @@
     <div class="wrap">
       <div class="cta-box">
         <h2>Bog‘lanish</h2>
-        <p>
-        </p>
+        <p></p>
 
         <div class="actions">
-          <!-- pastdagi telegram ham oq bo‘lib qolmasin -->
           <a class="btn" href="https://t.me/kham1d0v_712" target="_blank" rel="noreferrer">Telegram</a>
           <a class="btn" href="https://instagram.com/kham1d0v_727" target="_blank" rel="noreferrer">Instagram</a>
           <a class="btn" href="tel:+998502220600">+998 50 222 06 00</a>
@@ -745,6 +772,7 @@
       </div>
     </div>
   </section>
+
   <footer>
     <div class="wrap">
       <div class="copy">© 2026 Hamidov Sherzodbek • GitHub Pages</div>
@@ -766,6 +794,22 @@
         setTimeout(() => r.remove(), 650);
       });
     });
+
+    // ===== VIEW COUNTER (HAMMA UCHUN UMUMIY) =====
+    // Namespace unique bo‘lishi shart. Bu nomni o‘zgartirmasang ham bo‘ladi.
+    const namespace = "kham1d0v-portfolio";
+    const key = "total-views";
+
+    fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+      .then(r => r.json())
+      .then(data => {
+        const el = document.getElementById("viewsNum");
+        if (el) el.textContent = data.value.toLocaleString();
+      })
+      .catch(() => {
+        const el = document.getElementById("viewsNum");
+        if (el) el.textContent = "—";
+      });
   </script>
 </body>
 </html>
