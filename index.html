@@ -32,7 +32,6 @@
       overflow-x:hidden;
     }
 
-    /* Background */
     body::before{
       content:"";
       position:fixed;
@@ -66,7 +65,6 @@
       padding: 0 18px;
     }
 
-    /* Nav */
     .nav{
       position:sticky;
       top:0;
@@ -156,7 +154,6 @@
     }
     .phone-pill svg{ width:18px; height:18px; opacity:.92; }
 
-    /* Views pill */
     .views{
       display:inline-flex;
       align-items:center;
@@ -182,7 +179,6 @@
       .views{ display:none; }
     }
 
-    /* Hero */
     .hero{
       padding: 54px 0 22px;
       min-height: 68vh;
@@ -265,7 +261,6 @@
       letter-spacing: .1px;
     }
 
-    /* Buttons */
     .actions{
       display:flex;
       flex-wrap:wrap;
@@ -325,7 +320,6 @@
 
     .btn svg{ width:20px; height:20px; }
 
-    /* Ripple */
     .ripple{
       position:absolute;
       border-radius:999px;
@@ -344,7 +338,6 @@
       .btn:hover{ transform:none; }
     }
 
-    /* Sections */
     section{ padding: 52px 0; }
 
     .section-title{
@@ -437,7 +430,6 @@
       box-shadow: 0 0 0 6px rgba(255,255,255,.08);
     }
 
-    /* Travel */
     .travel-grid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -478,7 +470,6 @@
       font-size: 13px;
     }
 
-    /* Contact */
     .cta-box{
       border:1px solid var(--line);
       border-radius: 26px;
@@ -505,7 +496,6 @@
       font-size: 15px;
     }
 
-    /* Footer */
     footer{
       margin-top: 48px;
       border-top: 1px solid var(--line);
@@ -523,7 +513,6 @@
 </head>
 
 <body>
-  <!-- NAV -->
   <header class="nav">
     <div class="wrap">
       <div class="nav-in">
@@ -558,12 +547,11 @@
     </div>
   </header>
 
-  <!-- HERO -->
   <main id="home" class="hero">
     <div class="wrap">
       <div class="hero-card">
         <div class="hero-in">
-          <img class="avatar" src="profile.jpg" alt="Hamidov Sherzodbek">
+          <img class="avatar" src="photo_711.jpg" alt="Hamidov Sherzodbek">
           <h1>Hamidov Sherzodbek</h1>
           <div class="meta">2-kurs • Kiberxavfsizlik injiniring • Kokand University</div>
 
@@ -610,7 +598,6 @@
     </div>
   </main>
 
-  <!-- ABOUT -->
   <section id="about">
     <div class="wrap">
       <h2 class="section-title">Qisqa tanishtiruv</h2>
@@ -675,7 +662,6 @@
     </div>
   </section>
 
-  <!-- TRAVEL -->
   <section id="travel">
     <div class="wrap">
       <h2 class="section-title">Sayohat qilgan davlatlar</h2>
@@ -739,7 +725,6 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact">
     <div class="wrap">
       <div class="cta-box">
@@ -762,7 +747,6 @@
   </footer>
 
   <script>
-    // Ripple (faqat .btn uchun)
     document.querySelectorAll('.btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const rect = btn.getBoundingClientRect();
@@ -777,19 +761,11 @@
       });
     });
 
-    // =========================
-    // Views Counter (Unique + Total)
-    // =========================
-
-    // Qoidalar: namespace/key faqat kichik harf/raqam/tire
     const NAMESPACE = "kham1d0v-portfolio";
     const KEY_TOTAL = "total-views";
     const KEY_UNIQUE = "unique-views";
-
-    // 6 soatda 1 marta unique sanaydi
     const UNIQUE_TTL_MS = 6 * 60 * 60 * 1000;
     const UNIQUE_LS_KEY = "kham1d0v_last_unique_hit_ts";
-
     const viewsEl = document.getElementById("viewsNum");
     const LS_LAST_TOTAL = "kham1d0v_last_total_views";
 
@@ -838,7 +814,6 @@
     }
 
     async function initViews() {
-      // Fallback: cached ko‘rsat
       const cached = localStorage.getItem(LS_LAST_TOTAL);
       if (cached) setViewsUI(cached);
 
