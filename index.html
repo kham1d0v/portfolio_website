@@ -1,845 +1,668 @@
-<!doctype html>
-<html lang="uz">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hamidov Sherzodbek</title>
-  <meta name="description" content="Hamidov Sherzodbek — shaxsiy sahifa: qisqa tanishtiruv va kontakt linklar." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sherzod — Cybersecurity</title>
 
-  <style>
-    :root{
-      --bg:#050607;
-      --glass: rgba(16,18,22,.55);
-      --glass2: rgba(16,18,22,.42);
-      --line: rgba(255,255,255,.10);
-      --line2: rgba(255,255,255,.14);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.68);
-      --muted2: rgba(255,255,255,.52);
-      --shadow: 0 22px 80px rgba(0,0,0,.62);
-      --radius: 22px;
-      --radius2: 16px;
-      --max: 1120px;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
-    body{
-      margin:0;
-      color:var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background: var(--bg);
-      overflow-x:hidden;
-    }
+<style>
 
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      z-index:-2;
-      background:
-        radial-gradient(1100px 700px at 50% 20%, rgba(255,255,255,.08), transparent 55%),
-        radial-gradient(900px 650px at 15% 35%, rgba(255,255,255,.06), transparent 55%),
-        radial-gradient(900px 650px at 85% 40%, rgba(255,255,255,.05), transparent 55%),
-        url("bg.jpg");
-      background-size: cover;
-      background-position: center;
-      background-repeat:no-repeat;
-      filter: contrast(1.05) saturate(1.05);
-      transform: scale(1.02);
-    }
-    body::after{
-      content:"";
-      position:fixed;
-      inset:0;
-      z-index:-1;
-      background: linear-gradient(to bottom, rgba(0,0,0,.70), rgba(0,0,0,.78) 35%, rgba(0,0,0,.86));
-      pointer-events:none;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-    a{ color:inherit; text-decoration:none; }
+:root{
+--bg:#050505;
+--card:#0d0d0d;
+--line:rgba(255,255,255,.07);
+--text:#f5f5f5;
+--muted:rgba(255,255,255,.55);
+}
 
-    .wrap{
-      width:min(var(--max), 100%);
-      margin:0 auto;
-      padding: 0 18px;
-    }
+html{
+scroll-behavior:smooth;
+}
 
-    .nav{
-      position:sticky;
-      top:0;
-      z-index:50;
-      border-bottom:1px solid var(--line);
-      background: rgba(0,0,0,.28);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-    .nav-in{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding: 8px 0;
-    }
-    .nav-left{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width: 0;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-weight:850;
-      letter-spacing:.2px;
-      white-space:nowrap;
-    }
-    .brand .dot{
-      width:10px;height:10px;border-radius:999px;
-      background: rgba(255,255,255,.95);
-      box-shadow: 0 0 0 7px rgba(255,255,255,.10);
-    }
+body{
+font-family:Inter,sans-serif;
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
+}
 
-    .menu{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    .menu a{
-      color: var(--muted);
-      font-weight: 750;
-      font-size: 13.5px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      transition: .18s ease;
-      outline: none;
-    }
-    .menu a:hover{
-      color: var(--text);
-      background: rgba(255,255,255,.06);
-    }
-    .menu a:focus-visible{
-      color: var(--text);
-      box-shadow: 0 0 0 3px rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-    }
+body::before{
+content:"";
+position:fixed;
+inset:0;
+z-index:-2;
 
-    .phone-pill{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 8px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      font-weight:850;
-      transition: .18s ease;
-      outline: none;
-    }
-    .phone-pill:hover{ background: rgba(255,255,255,.10); transform: translateY(-1px); }
-    .phone-pill:focus-visible{ box-shadow: 0 0 0 3px rgba(255,255,255,.16); }
-    .phone-pill .p-ic{
-      width: 30px;
-      height: 30px;
-      border-radius: 999px;
-      display:grid;
-      place-items:center;
-      background: rgba(0,0,0,.22);
-      border: 1px solid rgba(255,255,255,.12);
-      flex: 0 0 auto;
-    }
-    .phone-pill svg{ width:18px; height:18px; opacity:.92; }
+background:
+radial-gradient(circle at top left, rgba(255,255,255,.04), transparent 30%),
+radial-gradient(circle at bottom right, rgba(255,255,255,.03), transparent 30%),
+#050505;
+}
 
-    .views{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.06);
-      color: var(--muted);
-      font-weight: 850;
-      font-size: 13px;
-      white-space: nowrap;
-    }
-    .views-dot{
-      width:8px;height:8px;border-radius:999px;
-      background: rgba(255,255,255,.85);
-      box-shadow: 0 0 0 6px rgba(255,255,255,.10);
-    }
-    .views #viewsNum{ color: var(--text); }
-    .views-label{ color: var(--muted2); font-weight: 800; }
+body::after{
+content:"";
+position:fixed;
+inset:0;
+z-index:-1;
 
-    @media (max-width:560px){
-      .views{ display:none; }
-    }
+background:
+linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
 
-    .hero{
-      padding: 54px 0 22px;
-      min-height: 68vh;
-      display:grid;
-      place-items:center;
-    }
-    .hero-card{
-      width:100%;
-      border:1px solid var(--line);
-      border-radius: 28px;
-      background: linear-gradient(180deg, var(--glass), rgba(16,18,22,.28));
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      overflow:hidden;
-      position:relative;
-    }
-    .hero-card::before{
-      content:"";
-      position:absolute;
-      inset:-120px -120px auto auto;
-      width: 320px; height: 320px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.18), transparent 60%);
-      transform: rotate(18deg);
-      pointer-events:none;
-    }
-    .hero-in{
-      padding: 34px 22px 28px;
-      display:grid;
-      justify-items:center;
-      text-align:center;
-      gap: 12px;
-    }
-    .avatar{
-      width: 120px;
-      height: 120px;
-      border-radius:999px;
-      object-fit:cover;
-      border: 2px solid rgba(255,255,255,.85);
-      box-shadow: 0 18px 60px rgba(0,0,0,.65);
-      background: rgba(0,0,0,.25);
-    }
-    h1{
-      margin: 6px 0 0;
-      font-size: 52px;
-      line-height: 1.05;
-      letter-spacing: -1px;
-    }
-    @media (max-width:560px){
-      h1{ font-size: 38px; }
-      .hero{ padding-top: 46px; }
-    }
-    .meta{
-      color: var(--muted);
-      font-weight: 700;
-      font-size: 14px;
-    }
-    .desc{
-      margin: 0;
-      max-width: 78ch;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 15.5px;
-    }
-    .tags{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      justify-content:center;
-      margin-top: 6px;
-    }
-    .tag{
-      padding: 9px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-      color: var(--muted);
-      font-weight: 750;
-      font-size: 13px;
-      letter-spacing: .1px;
-    }
+background-size:80px 80px;
+mask-image:linear-gradient(to bottom, rgba(0,0,0,.8), transparent);
+}
 
-    .actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      justify-content:center;
-      margin-top: 10px;
-    }
-    .btn{
-      position:relative;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding: 14px 18px;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      font-weight: 900;
-      font-size: 14px;
-      transition: .18s ease;
-      user-select:none;
-      -webkit-tap-highlight-color: transparent;
-      overflow:hidden;
-      outline: none;
-      isolation: isolate;
-    }
-    .btn:hover{ background: rgba(255,255,255,.10); transform: translateY(-2px); }
-    .btn:active{ transform: translateY(0); }
-    .btn:focus-visible{
-      box-shadow: 0 0 0 3px rgba(255,255,255,.18);
-      background: rgba(255,255,255,.10);
-    }
-    .btn svg{ opacity:.95; }
+.wrap{
+width:min(1280px,100%);
+margin:auto;
+padding:0 28px;
+}
 
-    .btn::before{
-      content:"";
-      position:absolute;
-      top:0;
-      left:-120%;
-      width:60%;
-      height:100%;
-      background: linear-gradient(
-        110deg,
-        transparent 0%,
-        rgba(255,255,255,.10) 40%,
-        rgba(255,255,255,.28) 50%,
-        rgba(255,255,255,.10) 60%,
-        transparent 100%
-      );
-      transform: skewX(-18deg);
-      pointer-events:none;
-      z-index:0;
-    }
-    .btn:hover::before{ animation: shimmerMove .85s ease-out forwards; }
-    @keyframes shimmerMove{ 0%{ left:-120%; } 100%{ left:130%; } }
+/* NAV */
 
-    .btn svg{ width:20px; height:20px; }
+.nav{
+position:fixed;
+top:0;
+width:100%;
+z-index:100;
+border-bottom:1px solid var(--line);
+background:rgba(5,5,5,.88);
+backdrop-filter:blur(12px);
+}
 
-    .ripple{
-      position:absolute;
-      border-radius:999px;
-      transform: translate(-50%, -50%);
-      background: rgba(255,255,255,.32);
-      animation: ripple .55s ease-out;
-      pointer-events:none;
-      z-index:1;
-    }
-    @keyframes ripple{
-      from{ width: 0; height: 0; opacity: .55; }
-      to{ width: 420px; height: 420px; opacity: 0; }
-    }
-    @media (hover: none){
-      .ripple{ background: rgba(255,255,255,.22); }
-      .btn:hover{ transform:none; }
-    }
+.nav-in{
+height:82px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
 
-    section{ padding: 52px 0; }
+.brand{
+font-size:15px;
+font-weight:800;
+letter-spacing:3px;
+text-transform:uppercase;
+}
 
-    .section-title{
-      text-align:center;
-      margin: 0 0 10px;
-      font-size: 40px;
-      letter-spacing: -.7px;
-    }
-    .section-sub{
-      text-align:center;
-      margin: 0 auto 22px;
-      max-width: 78ch;
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 15px;
-    }
+.menu{
+display:flex;
+gap:34px;
+}
 
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-    @media (max-width:980px){
-      .grid{ grid-template-columns: 1fr; }
-    }
+.menu a{
+color:var(--muted);
+text-decoration:none;
+font-size:13px;
+font-weight:600;
+transition:.2s;
+}
 
-    .card{
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, var(--glass2), rgba(16,18,22,.18));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      padding: 18px;
-      transition: .18s ease;
-    }
-    .card:hover{ transform: translateY(-2px); border-color: var(--line2); }
+.menu a:hover{
+color:white;
+}
 
-    .card-top{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-bottom: 10px;
-    }
+/* HERO */
 
-    .ic{
-      width: 44px; height: 44px;
-      border-radius: 14px;
-      display:grid;
-      place-items:center;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.18);
-      flex: 0 0 auto;
-    }
-    .ic svg{ width: 22px; height: 22px; opacity:.92; }
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+padding-top:90px;
+}
 
-    .card h3{
-      margin:0;
-      font-size: 18px;
-      letter-spacing: -.2px;
-    }
-    .card p{
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 14.8px;
-    }
+.hero-card{
+width:100%;
+background:#0b0b0b;
+border:1px solid var(--line);
+overflow:hidden;
+}
 
-    .bullets{
-      margin: 12px 0 0;
-      padding: 0;
-      list-style:none;
-      display:grid;
-      gap: 8px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-    }
-    .bullets li{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-    }
-    .bullets li::before{
-      content:"";
-      width:6px;height:6px;border-radius:999px;
-      margin-top: 8px;
-      background: rgba(255,255,255,.72);
-      flex: 0 0 auto;
-      box-shadow: 0 0 0 6px rgba(255,255,255,.08);
-    }
+.hero-grid{
+display:grid;
+grid-template-columns:1.2fr .8fr;
+}
 
-    .travel-grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 18px;
-    }
-    @media (max-width:980px){
-      .travel-grid{ grid-template-columns: 1fr; }
-    }
-    .flagline{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      margin-bottom: 10px;
-    }
-    .flag{
-      width: 46px; height: 46px;
-      border-radius: 16px;
-      display:grid;
-      place-items:center;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.18);
-      font-size: 22px;
-      box-shadow: 0 12px 44px rgba(0,0,0,.45);
-      flex: 0 0 auto;
-    }
-    .flagmeta{
-      display:grid;
-      gap:2px;
-    }
-    .flagmeta .country{
-      font-weight: 900;
-      letter-spacing: -.2px;
-    }
-    .flagmeta .cities{
-      color: var(--muted2);
-      font-weight: 750;
-      font-size: 13px;
-    }
+.hero-left{
+padding:90px 70px;
+}
 
-    .cta-box{
-      border:1px solid var(--line);
-      border-radius: 26px;
-      background: linear-gradient(180deg, var(--glass), rgba(16,18,22,.22));
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      padding: 46px 18px;
-      text-align:center;
-    }
-    .cta-box h2{
-      margin:0 0 10px;
-      font-size: 38px;
-      letter-spacing: -.7px;
-    }
-    @media (max-width:560px){
-      .cta-box h2{ font-size: 30px; }
-    }
-    .cta-box p{
-      margin: 0 auto 18px;
-      max-width: 82ch;
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 15px;
-    }
+.hero-right{
+border-left:1px solid var(--line);
+background:#090909;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:40px;
+}
 
-    footer{
-      margin-top: 48px;
-      border-top: 1px solid var(--line);
-      background: rgba(0,0,0,.25);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      padding: 26px 0;
-    }
-    .copy{
-      text-align:center;
-      color: var(--muted2);
-      font-size: 13px;
-    }
-  </style>
+.avatar{
+width:100%;
+max-width:340px;
+aspect-ratio:1/1;
+object-fit:cover;
+filter:grayscale(100%);
+}
+
+.small{
+font-size:12px;
+letter-spacing:2px;
+text-transform:uppercase;
+color:var(--muted);
+margin-bottom:18px;
+}
+
+h1{
+font-size:82px;
+line-height:.95;
+font-weight:700;
+letter-spacing:-5px;
+max-width:700px;
+}
+
+.desc{
+margin-top:30px;
+max-width:600px;
+line-height:1.9;
+font-size:15px;
+color:var(--muted);
+}
+
+.actions{
+display:flex;
+gap:14px;
+margin-top:40px;
+flex-wrap:wrap;
+}
+
+.btn{
+height:58px;
+padding:0 28px;
+display:flex;
+align-items:center;
+justify-content:center;
+border:1px solid var(--line);
+background:#111;
+color:white;
+text-decoration:none;
+font-size:13px;
+font-weight:700;
+letter-spacing:.5px;
+transition:.2s;
+}
+
+.btn:hover{
+background:#181818;
+}
+
+/* SECTION */
+
+section{
+padding:120px 0;
+}
+
+.section-top{
+margin-bottom:60px;
+}
+
+.section-name{
+font-size:12px;
+letter-spacing:2px;
+text-transform:uppercase;
+color:var(--muted);
+margin-bottom:18px;
+}
+
+.section-title{
+font-size:64px;
+line-height:1;
+letter-spacing:-4px;
+max-width:700px;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:1px;
+background:rgba(255,255,255,.06);
+}
+
+.card{
+background:#0b0b0b;
+padding:48px;
+min-height:320px;
+transition:.2s;
+}
+
+.card:hover{
+background:#101010;
+}
+
+.card-number{
+font-size:14px;
+color:var(--muted);
+margin-bottom:28px;
+}
+
+.card h3{
+font-size:32px;
+font-weight:700;
+letter-spacing:-1px;
+margin-bottom:18px;
+}
+
+.card p{
+color:var(--muted);
+line-height:1.9;
+font-size:15px;
+}
+
+/* PROJECT */
+
+.project{
+border-top:1px solid var(--line);
+padding:34px 0;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+}
+
+.project-left h3{
+font-size:34px;
+letter-spacing:-2px;
+margin-bottom:10px;
+}
+
+.project-left p{
+color:var(--muted);
+max-width:500px;
+line-height:1.8;
+}
+
+.project-year{
+font-size:15px;
+color:var(--muted);
+}
+
+/* CONTACT */
+
+.contact-box{
+background:#0b0b0b;
+border:1px solid var(--line);
+padding:90px 60px;
+}
+
+.contact-box h2{
+font-size:74px;
+line-height:.95;
+letter-spacing:-5px;
+max-width:700px;
+}
+
+.contact-box p{
+margin-top:24px;
+max-width:600px;
+line-height:1.9;
+color:var(--muted);
+}
+
+/* FOOTER */
+
+footer{
+padding:40px 0;
+border-top:1px solid var(--line);
+}
+
+.copy{
+color:var(--muted);
+font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:980px){
+
+.hero-grid{
+grid-template-columns:1fr;
+}
+
+.hero-right{
+border-left:none;
+border-top:1px solid var(--line);
+}
+
+h1{
+font-size:54px;
+letter-spacing:-3px;
+}
+
+.hero-left{
+padding:60px 28px;
+}
+
+.section-title{
+font-size:42px;
+letter-spacing:-2px;
+}
+
+.contact-box h2{
+font-size:46px;
+letter-spacing:-3px;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.project{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.menu{
+display:none;
+}
+
+}
+
+</style>
 </head>
 
 <body>
-  <header class="nav">
-    <div class="wrap">
-      <div class="nav-in">
-        <div class="nav-left">
-          <div class="brand"><span class="dot"></span> Sherzod</div>
 
-          <div class="views" id="views" title="Sayt ko‘rishlar soni">
-            <span class="views-dot"></span>
-            <span id="viewsNum">—</span>
-            <span class="views-label">views</span>
-          </div>
-        </div>
+<header class="nav">
+<div class="wrap">
+<div class="nav-in">
 
-        <nav class="menu">
-          <a href="#home">Bosh sahifa</a>
-          <a href="#about">Men haqimda</a>
-          <a href="#travel">Sayohat</a>
-          <a href="#contact">Bog‘lanish</a>
+<div class="brand">
+SHERZOD
+</div>
 
-          <a class="phone-pill" href="tel:+998502220600" aria-label="Telefon">
-            <span class="p-ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M7.3 3.8l2.9 2.1c.6.4.8 1.2.5 1.8L9.6 10c.8 1.5 2 2.8 3.3 4.1 1.3 1.3 2.6 2.4 4.1 3.3l2.3-1.1c.6-.3 1.4-.1 1.8.5l2.1 2.9c.4.6.3 1.4-.3 1.9-1.1.9-2.5 1.4-4 1.3-3.5-.2-7-2.3-10.1-5.4C5.7 14.3 3.6 10.8 3.4 7.3c-.1-1.5.4-2.9 1.3-4 .5-.6 1.3-.7 1.9-.3z"
-                  stroke="white" stroke-opacity=".92" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            +998 50 222 06 00
-          </a>
-        </nav>
-      </div>
-    </div>
-  </header>
+<nav class="menu">
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
 
-  <main id="home" class="hero">
-    <div class="wrap">
-      <div class="hero-card">
-        <div class="hero-in">
-          <img class="avatar" src="photo_5341288893896136305_y.jpg" alt="Hamidov Sherzodbek">
-          <h1>Hamidov Sherzodbek</h1>
-          <div class="meta">2-kurs • Kiberxavfsizlik injiniring • Kokand University</div>
+</div>
+</div>
+</header>
 
-          <p class="desc">
-            Farg‘ona viloyati, Rishton tumani. Kiberxavfsizlik yo‘nalishi talabasiman.
-            Boks bilan 6 yil shug‘ullanganman, 2 marta viloyat chempioni.
-            Minimal, tartibli va ishonchli profil — keraksiz ma’lumotsiz.
-          </p>
+<main class="hero">
 
-          <div class="tags" aria-label="Teglar">
-            <span class="tag">Minimal & Dark</span>
-            <span class="tag">Cybersecurity</span>
-            <span class="tag">Boxing discipline</span>
-          </div>
+<div class="wrap">
 
-          <div class="actions">
-            <a class="btn" href="https://t.me/kham1d0v_712" target="_blank" rel="noreferrer">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M21 5.3L3.9 12.1c-1.2.5-1.2 1.2-.2 1.5l4.4 1.4 10.1-6.4c.5-.3.9-.1.5.2l-8.2 7.5-.3 4.3c.4 0 .6-.2.9-.5l2.2-2.2 4.5 3.3c.8.4 1.4.2 1.6-.8l2.8-13c.3-1.2-.5-1.7-1.4-1.3z"
-                      stroke="white" stroke-opacity=".92" stroke-width="1.6" stroke-linejoin="round"/>
-              </svg>
-              Telegram
-            </a>
+<div class="hero-card">
 
-            <a class="btn" href="https://instagram.com/kham1d0v_727" target="_blank" rel="noreferrer">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M7.5 3.8h9c2 0 3.7 1.7 3.7 3.7v9c0 2-1.7 3.7-3.7 3.7h-9c-2 0-3.7-1.7-3.7-3.7v-9c0-2 1.7-3.7 3.7-3.7z" stroke="white" stroke-opacity=".92" stroke-width="1.6"/>
-                <path d="M12 16.2a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4z" stroke="white" stroke-opacity=".92" stroke-width="1.6"/>
-                <path d="M17.4 6.6h.01" stroke="white" stroke-opacity=".92" stroke-width="3" stroke-linecap="round"/>
-              </svg>
-              Instagram
-            </a>
+<div class="hero-grid">
 
-            <a class="btn" href="tel:+998502220600">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M7.3 3.8l2.9 2.1c.6.4.8 1.2.5 1.8L9.6 10c.8 1.5 2 2.8 3.3 4.1 1.3 1.3 2.6 2.4 4.1 3.3l2.3-1.1c.6-.3 1.4-.1 1.8.5l2.1 2.9c.4.6.3 1.4-.3 1.9-1.1.9-2.5 1.4-4 1.3-3.5-.2-7-2.3-10.1-5.4C5.7 14.3 3.6 10.8 3.4 7.3c-.1-1.5.4-2.9 1.3-4 .5-.6 1.3-.7 1.9-.3z"
-                      stroke="white" stroke-opacity=".92" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Telefon
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
+<div class="hero-left">
 
-  <section id="about">
-    <div class="wrap">
-      <h2 class="section-title">Qisqa tanishtiruv</h2>
-      <p class="section-sub">Minimal profil: kimligim, yo‘nalishim va intizom manbai — qisqa va aniq.</p>
+<div class="small">
+Cybersecurity Engineer
+</div>
 
-      <div class="grid">
-        <article class="card">
-          <div class="card-top">
-            <div class="ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12z" stroke="white" stroke-opacity=".92" stroke-width="1.6"/>
-                <path d="M4.5 20.2c1.6-3 4.3-4.7 7.5-4.7s5.9 1.7 7.5 4.7" stroke="white" stroke-opacity=".92" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3>Kimman</h3>
-          </div>
-          <p>Hamidov Sherzodbek. Kokand University 2-kurs talaba. Yo‘nalish: kiberxavfsizlik injiniring.</p>
-          <ul class="bullets">
-            <li>Qiziqish: amaliy xavfsizlik, Linux, tarmoq asoslari</li>
-            <li>Shior: “gap emas — natija”</li>
-            <li>Profil: minimal, toza, shaffof</li>
-          </ul>
-        </article>
+<h1>
+Crafting Secure Digital Experiences.
+</h1>
 
-        <article class="card">
-          <div class="card-top">
-            <div class="ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 3l8 4v6c0 5-3.3 9.1-8 8-4.7 1.1-8-3-8-8V7l8-4z" stroke="white" stroke-opacity=".92" stroke-width="1.6" stroke-linejoin="round"/>
-                <path d="M9.2 12.2l1.9 1.9 3.9-4.2" stroke="white" stroke-opacity=".92" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h3>Yo‘nalish / Fokus</h3>
-          </div>
-          <p>Kiberxavfsizlikni “asos + odat + amaliyot” orqali olib ketaman: tizimni tushunish va keyin himoya.</p>
-          <ul class="bullets">
-            <li>Linux: terminal, ruxsatlar, servislar</li>
-            <li>Network: IP/DNS/HTTP, trafik tushunish</li>
-            <li>Cloud security: basic tushunchalar (keyin chuqurlashadi)</li>
-          </ul>
-        </article>
+<p class="desc">
+Cybersecurity engineering student focused on modern infrastructure,
+system security, minimal interfaces and disciplined execution.
+Building clean, premium and reliable digital experiences.
+</p>
 
-        <article class="card">
-          <div class="card-top">
-            <div class="ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M7 20h10" stroke="white" stroke-opacity=".92" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M9 20l1-7 4-8 3 2-4 7-1 6" stroke="white" stroke-opacity=".92" stroke-width="1.6" stroke-linejoin="round"/>
-                <path d="M10 13l4 2" stroke="white" stroke-opacity=".92" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3>Sport / Intizom</h3>
-          </div>
-          <p>Boks: 6 yil. 2 marta viloyat chempioni. Bu menga intizom, reja, sabr va natija beradi.</p>
-          <ul class="bullets">
-            <li>Rejim: muntazam mashg‘ulot</li>
-            <li>Psixologiya: bosimda sokin qolish</li>
-            <li>Natija: maqsadga ishlash</li>
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
+<div class="actions">
 
-  <section id="travel">
-    <div class="wrap">
-      <h2 class="section-title">Sayohat qilgan davlatlar</h2>
-      <p class="section-sub">Ko‘rgan shaharlar: muhit, ritm va men olgan xulosalar.</p>
+<a href="https://t.me/kham1d0v_712" class="btn">
+Telegram
+</a>
 
-      <div class="travel-grid">
-        <article class="card">
-          <div class="flagline">
-            <div class="flag" aria-hidden="true">🇷🇺</div>
-            <div class="flagmeta">
-              <div class="country">Rossiya</div>
-              <div class="cities">Yekaterinburg • Moskva</div>
-            </div>
-          </div>
-          <p>
-            Yekaterinburg — tartib va tez ritm. Moskva — katta infratuzilma, texnologiya muhitini ko‘rib motivatsiya oshadi.
-          </p>
-          <ul class="bullets">
-            <li>Shahar intizomi: vaqt + reja</li>
-            <li>Infratuzilma: katta tizim ishlashi</li>
-            <li>Xulosa: tezlik boshqaruv bilan foyda</li>
-          </ul>
-        </article>
+<a href="tel:+998502220600" class="btn">
+Contact
+</a>
 
-        <article class="card">
-          <div class="flagline">
-            <div class="flag" aria-hidden="true">🇰🇿</div>
-            <div class="flagmeta">
-              <div class="country">Qozog‘iston</div>
-              <div class="cities">Astana • Almati</div>
-            </div>
-          </div>
-          <p>
-            Astana — modern va sokin “tartib” kayfiyati. Almati — energiya, tog‘ havosi va tez harakat.
-          </p>
-          <ul class="bullets">
-            <li>Astana: reja + tartib</li>
-            <li>Almati: energiya + harakat</li>
-            <li>Xulosa: moslashuv — kuch</li>
-          </ul>
-        </article>
+</div>
 
-        <article class="card">
-          <div class="flagline">
-            <div class="flag" aria-hidden="true">🇰🇬</div>
-            <div class="flagmeta">
-              <div class="country">Qirg‘iziston</div>
-              <div class="cities">Osh</div>
-            </div>
-          </div>
-          <p>
-            Osh — tarixiy ruh, soddalik va tog‘lar yaqinligi. Xotirjam muhit fokusni kuchaytiradi.
-          </p>
-          <ul class="bullets">
-            <li>Soddalik + mehmondo‘stlik</li>
-            <li>Ritm: shoshmasdan, aniq yurish</li>
-            <li>Xulosa: tinchlik — konsentratsiya</li>
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
+</div>
 
-  <section id="contact">
-    <div class="wrap">
-      <div class="cta-box">
-        <h2>Bog‘lanish</h2>
-        <p>Hamkorlik, savol yoki taklif bo‘lsa — tez va to‘g‘ridan-to‘g‘ri yozing.</p>
+<div class="hero-right">
 
-        <div class="actions">
-          <a class="btn" href="https://t.me/kham1d0v_712" target="_blank" rel="noreferrer">Telegram</a>
-          <a class="btn" href="https://instagram.com/kham1d0v_727" target="_blank" rel="noreferrer">Instagram</a>
-          <a class="btn" href="tel:+998502220600">+998 50 222 06 00</a>
-        </div>
-      </div>
-    </div>
-  </section>
+<img src="photo_5341288893896136305_y.jpg" class="avatar">
 
-  <footer>
-    <div class="wrap">
-      <div class="copy">© 2026 Hamidov Sherzodbek • GitHub Pages</div>
-    </div>
-  </footer>
+</div>
 
-  <script>
-    document.querySelectorAll('.btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const rect = btn.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const r = document.createElement('span');
-        r.className = 'ripple';
-        r.style.left = x + 'px';
-        r.style.top = y + 'px';
-        btn.appendChild(r);
-        setTimeout(() => r.remove(), 650);
-      });
-    });
+</div>
 
-    const NAMESPACE = "kham1d0v-portfolio";
-    const KEY_TOTAL = "total-views";
-    const KEY_UNIQUE = "unique-views";
-    const UNIQUE_TTL_MS = 6 * 60 * 60 * 1000;
-    const UNIQUE_LS_KEY = "kham1d0v_last_unique_hit_ts";
-    const viewsEl = document.getElementById("viewsNum");
-    const LS_LAST_TOTAL = "kham1d0v_last_total_views";
+</div>
 
-    async function fetchJSON(url, timeoutMs = 5500) {
-      const controller = new AbortController();
-      const t = setTimeout(() => controller.abort(), timeoutMs);
-      try {
-        const res = await fetch(url, { method: "GET", cache: "no-store", signal: controller.signal });
-        if (!res.ok) throw new Error("HTTP " + res.status);
-        return await res.json();
-      } finally {
-        clearTimeout(t);
-      }
-    }
+</div>
 
-    function setViewsUI(val) {
-      if (!viewsEl) return;
-      if (val === null || val === undefined) { viewsEl.textContent = "—"; return; }
-      viewsEl.textContent = Number(val).toLocaleString();
-    }
+</main>
 
-    function shouldCountUniqueNow() {
-      const last = Number(localStorage.getItem(UNIQUE_LS_KEY) || "0");
-      return (Date.now() - last) > UNIQUE_TTL_MS;
-    }
+<section id="about">
 
-    function markUniqueCounted() {
-      localStorage.setItem(UNIQUE_LS_KEY, String(Date.now()));
-    }
+<div class="wrap">
 
-    async function getTotalViews() {
-      const url = `https://api.countapi.xyz/get/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY_TOTAL)}`;
-      const data = await fetchJSON(url);
-      return data?.value;
-    }
+<div class="section-top">
 
-    async function hitTotalViews() {
-      const url = `https://api.countapi.xyz/hit/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY_TOTAL)}`;
-      const data = await fetchJSON(url);
-      return data?.value;
-    }
+<div class="section-name">
+About
+</div>
 
-    async function hitUnique() {
-      const url = `https://api.countapi.xyz/hit/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY_UNIQUE)}`;
-      await fetchJSON(url);
-    }
+<h2 class="section-title">
+Minimal mindset with disciplined execution.
+</h2>
 
-    async function initViews() {
-      const cached = localStorage.getItem(LS_LAST_TOTAL);
-      if (cached) setViewsUI(cached);
+</div>
 
-      try {
-        if (shouldCountUniqueNow()) {
-          await hitUnique();
-          const total = await hitTotalViews();
-          setViewsUI(total);
-          localStorage.setItem(LS_LAST_TOTAL, String(total));
-          markUniqueCounted();
-          return;
-        }
+<div class="grid">
 
-        const total = await getTotalViews();
-        if (total !== undefined) {
-          setViewsUI(total);
-          localStorage.setItem(LS_LAST_TOTAL, String(total));
-        } else {
-          if (!cached) setViewsUI(null);
-        }
-      } catch (e) {
-        if (!cached) setViewsUI(null);
-      }
-    }
+<div class="card">
 
-    initViews();
-  </script>
+<div class="card-number">
+01
+</div>
+
+<h3>
+Cybersecurity
+</h3>
+
+<p>
+Focused on cybersecurity engineering, system architecture,
+network understanding and digital protection principles.
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="card-number">
+02
+</div>
+
+<h3>
+Discipline
+</h3>
+
+<p>
+6 years of boxing experience developed structure,
+focus and calm decision-making under pressure.
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="card-number">
+03
+</div>
+
+<h3>
+Minimal Design
+</h3>
+
+<p>
+Strong preference for clean typography,
+dark layouts and professional interfaces
+without unnecessary visual noise.
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="card-number">
+04
+</div>
+
+<h3>
+Growth
+</h3>
+
+<p>
+Continuously improving skills in Linux,
+network security, cloud systems and modern technologies.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="projects">
+
+<div class="wrap">
+
+<div class="section-top">
+
+<div class="section-name">
+Projects
+</div>
+
+<h2 class="section-title">
+Selected work & direction.
+</h2>
+
+</div>
+
+<div class="project">
+
+<div class="project-left">
+<h3>
+Security Portfolio
+</h3>
+
+<p>
+Minimal cybersecurity portfolio inspired by enterprise-grade interfaces.
+</p>
+</div>
+
+<div class="project-year">
+2026
+</div>
+
+</div>
+
+<div class="project">
+
+<div class="project-left">
+<h3>
+Telegram AI Bot
+</h3>
+
+<p>
+Telegram automation integrated with modern AI systems and APIs.
+</p>
+</div>
+
+<div class="project-year">
+2026
+</div>
+
+</div>
+
+<div class="project">
+
+<div class="project-left">
+<h3>
+Linux Research
+</h3>
+
+<p>
+Learning Linux permissions, networking and infrastructure fundamentals.
+</p>
+</div>
+
+<div class="project-year">
+2025
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<div class="wrap">
+
+<div class="contact-box">
+
+<h2>
+Let's build something strong.
+</h2>
+
+<p>
+For collaboration, projects or communication —
+contact directly through Telegram or phone.
+</p>
+
+<div class="actions">
+
+<a href="https://t.me/kham1d0v_712" class="btn">
+Telegram
+</a>
+
+<a href="tel:+998502220600" class="btn">
+Phone
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<div class="wrap">
+
+<div class="copy">
+© 2026 Sherzod — Cybersecurity Portfolio
+</div>
+
+</div>
+
+</footer>
+
 </body>
 </html>
